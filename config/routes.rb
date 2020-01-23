@@ -34,11 +34,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders, only:[:index,:show]
+    resources :orders, except:[:new,:show,:create,:destroy]
   end
 
   namespace :admin do
-    resources :orders, except:[:new,:show,:create,:destroy]
+    resources :items
   end
 
   namespace :admin do
