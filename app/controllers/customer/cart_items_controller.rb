@@ -3,6 +3,7 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def index
+    @cart_items = CartItem.all
   end
 
   def confirm
