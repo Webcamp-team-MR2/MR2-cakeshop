@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only:[:index,:show,:edit,:update]
-    get 'customers/top'
+    get 'customer/top' => "customers#top"
   end
 
 end
