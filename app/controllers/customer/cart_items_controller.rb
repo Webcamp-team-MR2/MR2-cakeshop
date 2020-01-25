@@ -1,4 +1,4 @@
-class Customer::CartItemsController < CustomerapplicationsController
+class Customer::CartItemsController < Customer::CustomerapplicationsController
   def edit
   end
 

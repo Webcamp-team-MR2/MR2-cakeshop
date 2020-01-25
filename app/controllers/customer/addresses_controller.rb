@@ -1,4 +1,4 @@
-class Customer::AddressesController < CustomerapplicationsController
+class Customer::AddressesController < Customer::CustomerapplicationsController
   def edit
   end
 
