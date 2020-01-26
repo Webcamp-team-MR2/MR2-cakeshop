@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <%= link_to "商品新規登録", new_admin_item_path %>
+      <h3>商品一覧画面</h3>
+      <table class = "table table-fover">
+        <tr>
+            <th>注文日</th>
+            <th>郵便番号</th>
+            <th>送付先住所</th>
+            <th>宛名</th>
+            <th>注文ステータス</th>
+            <th>支払い方法</th>
+            <th>送料</th>
+        </tr>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to order.created_at.to_s(:datetime_jp) , %>
+            <td><%= order.postal_code%></td>
+            <td><%= order.address%></td>
+            <td><%= order.full_name%></td>
+            <td><%= order.order_status%></td>
+            <td><%= order.pay_method%></td>
+            <td><%= order.shipping_fee%></td>
+            <!--<td><%= link_to "商品編集", edit_admin_item_path(order) %></td>-->
+          </tr>
+        <% end %>
+      </table>
+  </body>
 </html>
