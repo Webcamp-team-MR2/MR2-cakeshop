@@ -18,8 +18,8 @@ class Admin::CategoriesController < Admin::AdminapplicationsController
     @category.update(category_params)
   end
 
- private
+  private
   def category_params
-     params.require(:category).permit(:sweets_name)
+    params.require(:category).permit(:sweets_name)
   end
 end
