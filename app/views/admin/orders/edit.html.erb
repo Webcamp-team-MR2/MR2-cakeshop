@@ -7,8 +7,21 @@
     <title>Document</title>
   </head>
   <body>
-    <%= link_to "商品新規登録", new_admin_item_path %>
-      <h3>商品一覧画面</h3>
+    <h3>注文詳細画面</h3>
+    <%= "購入者：" %>
+    <%= @order.customer.first_name + @order.customer.last_name %><br>
+    <%= "配送先：" %>
+    <%= @order.address %><br>
+    <%= "宛名：" %>
+    <%= @order.full_name %><br>
+    <%= "支払い方法：" %>
+    <% if @order.pay_method %>
+      <%= "銀行振込" %>
+    <% else %>
+      <%= "クレジットカード" %>
+    <% end %>
+    <br>
+
       <table class = "table table-fover">
         <tr>
             <th>商品名</th>

@@ -4,6 +4,7 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   end
 
   def edit
+    @order = Order.find(params[:id])
     @orders = OrderItem.where(params[:order_id])
   end
 
