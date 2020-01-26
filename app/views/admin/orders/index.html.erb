@@ -21,7 +21,7 @@
         </tr>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to order.created_at.to_s(:datetime_jp) , %>
+            <td><%= link_to order.created_at.to_s(:datetime_jp) ,edit_admin_order_path(order) %>
             <td><%= order.postal_code%></td>
             <td><%= order.address%></td>
             <td><%= order.full_name%></td>
