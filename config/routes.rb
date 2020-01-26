@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
   }
 
-  root :to => 'home/homes#top'
+  # root :to => 'home/homes#top'
 
   scope module: :customer do
     resources :adresses, except:[:new,:show]
@@ -53,6 +53,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers, only:[:index,:show,:edit,:update]
     get 'customer/top' => "customers#top"
+  end
+
+  namespace :admin do
+    resources :categories
   end
 
 end

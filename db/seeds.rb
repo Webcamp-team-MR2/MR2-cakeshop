@@ -7,13 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Category.create!(
-    [
-        {
-            sweets_name: 'game'
-        }  
-    ]
-)
-Category.create!(
   [
     {
       sweets_name: 'cake',
