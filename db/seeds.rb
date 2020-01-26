@@ -30,16 +30,6 @@ Item.create!(
   ]
 )
 
-CartItem.create!(
-  [
-    {
-      item_id: '1',
-      customer_id: '1',
-      count: '1',
-    }
-  ]
-)
-
 
 
 
