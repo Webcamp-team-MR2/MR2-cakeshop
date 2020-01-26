@@ -1,6 +1,6 @@
 <h3>商品新規登録画面</h3>
 
-<%= form_for (@item), url:'/admin/items' do |f| %>
+  <%= form_for (@item), url:'/admin/items' do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name%><br>
   <%= f.label :image %>
@@ -12,5 +12,5 @@
   <%= f.label :description %>
   <%= f.text_area :description %><br>
 
-  <%= f.submit 'Create Item'%>
+<%= f.submit 'Create Item'%>
 <%end%>
