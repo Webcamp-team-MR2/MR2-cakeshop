@@ -30,23 +30,3 @@
 #   ]
 # )
 
-CartItem.create!(
-  [
-    # {
-    #   item_id: '1',
-    #   customer_id: '1',
-    #   count: '1',
-    # },
-    {
-      item_id: '2',
-      customer_id: '1',
-      count: '2',
-    }
-  ]
-)
-
-
-
-
-
-
