@@ -8,15 +8,15 @@
     <%= f.label :ジャンル %>
     <%= f.text_field :sweets_name %>
     <label>
-        <%= f.radio_button :category_status, 1 %>
+        <%= f.radio_button :category_status, 0 %>
         有効</label>
     <label>
-        <%= f.radio_button :category_status, 2 %>
+        <%= f.radio_button :category_status, 1 %>
         無効</label>
     <%= f.submit '変更を保存する', class:"btn btn-primary glyphicon glyphicon-wrench
     btn-lg" %>
     <%= link_to "削除", admin_category_path(@category), method: :delete,
     "data-confirm" => "本当に削除しますか？", class:"btn glyphicon glyphicon-remove btn-lg,
     text-danger" %>
-<% end %>
+    <% end %>
 </div>
