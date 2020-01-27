@@ -12,8 +12,7 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
 
   def create
     @cart_item = CartItem.new(cartitem_params)
-    # binding.pry
-    @cart_item.customer.id = current_customer.id
+# binding.pry
     if @cart_item.save
       redirect_to cart_items_path
     else redirect_to item_path
