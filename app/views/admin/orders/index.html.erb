@@ -19,7 +19,7 @@
           <tr>
             <td><%= link_to order.created_at.to_s(:datetime_jp) ,edit_admin_order_path(order) %>
             <td><%= order.customer.first_name + order.customer.last_name%></td>
-            <td><%= 20 %></td>
+            <td><%= order.item_count %></td>
             <td><%if order.order_status == 0%>
               <%= "入金待ち" %>
               <% else %>

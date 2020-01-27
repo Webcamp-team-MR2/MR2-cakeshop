@@ -43,7 +43,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :orders, except:[:new,:show,:create,:destroy]
+    resources :orders, except:[:new,:show,:create,:destroy] do
+      
+      patch 'item_update/:order_item_id' => 'orders#item_update', as: 'update'
+    end
   end
 
   namespace :admin do

@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-  </head>
-  <body>
-    <h3>注文詳細画面</h3>
-    <%= "購入者：" %>
-    <%= @order.customer.first_name + @order.customer.last_name %><br>
-    <%= "配送先：" %>
-    <%= @order.address %><br>
-    <%= "宛名：" %>
-    <%= @order.full_name %><br>
-    <%= "支払い方法：" %>
-    <% if @order.pay_method %>
-      <%= "銀行振込" %>
-    <% else %>
-      <%= "クレジットカード" %>
-    <% end %>
-    <br>
 
-      <table class = "table table-fover">
-        <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>制作ステータス</th>
-        </tr>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.item.name%></td>
-            <td><%= order.price%></td>
-            <td><%= order.count%></td>
-            <td><%= order.count * order.price%></td>
-            <td><%= order.create_status%></td>
-          </tr>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>注文詳細画面</h3>
+  <%= "購入者：" %>
+  <%= @order.customer.first_name + @order.customer.last_name %><br>
+  <%= "配送先：" %>
+  <%= @order.address %><br>
+  <%= "宛名：" %>
+  <%= @order.full_name %><br>
+  <%= "支払い方法：" %>
+  <% if @order.pay_method %>
+  <%= "銀行振込" %>
+  <% else %>
+  <%= "クレジットカード" %>
+  <% end %>
+  <br>
+  <%= form_for (@order), url:admin_order_path do |f| %>
+  <%= f.select :order_status, [['入金待ち',0],['入金確認',1],['制作中',2],['制作完了',3],['制作完了',4]]%>
+  <%= f.submit '更新'%>
+  <% end %>
+
+  <table class="table table-fover">
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+    </tr>
+    <% @order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name%></td>
+      <td><%= order_item.price%></td>
+      <td><%= order_item.count%></td>
+      <td><%= order_item.count * order_item.price%></td>
+      <td><%= form_for (order_item), url:admin_order_update_path([order_item] ,order_item_id:order_item.id) do |f| %>
+        <%= f.select :create_status, [['着手不可',0],['制作待ち',1],['制作中',2],['制作完了',3]]%>
+        <%= f.submit '更新'%>
         <% end %>
-      </table>
-  </body>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</body>
+
 </html>
