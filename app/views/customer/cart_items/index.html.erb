@@ -1,16 +1,21 @@
 <h3>ショッピングカート</h3>
-<table class="table">
-	<tr>
-		<th>商品名</th><th>画像</th><th>単価(税込)</th><th>数量</th><th>小計</th><th></th>
+<div>
+	<%=link_to "カートを空にする", cart_items_path, class: "btn btn-danger", method: :delete,"data-confirm" => "Are you sure?" %>
+</div>
+<table border="1" width="800" style="border-collapse: collapse">
+	<tr align="center">
+		<th width="500" align="center">商品名</th><th width="150">単価(税込)</th><th  width="150">数量</th><th  width="150">小計</th><th  width="150"></th>
 	</tr>
 	<% @cart_items.each do |cart_item| %>
-	<tr>
-		<td><%= cart_item.item.name %></td>
+
 		<td><%= cart_item.item.price %></td>
 		<td><%= cart_item.count %></td>
+		<td><%= cart_item.item.price %></td>
+		<td><%=link_to "削除する", cart_items_path, class: "btn btn-danger", method: :delete,"data-confirm" => "Are you sure?" %></td>
 	</tr>
 	<% end %>
 </table>
+
 
 
 
