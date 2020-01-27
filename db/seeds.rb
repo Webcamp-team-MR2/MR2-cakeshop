@@ -30,6 +30,7 @@
 #   ]
 # )
 
+
 CartItem.create!(
   [
     # {
@@ -44,9 +45,3 @@ CartItem.create!(
     }
   ]
 )
-
-
-
-
-
-

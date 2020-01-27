@@ -17,23 +17,20 @@ class Admin::ItemsController < Admin::AdminapplicationsController
 
   def create
     @item = Item.new(item_params)
-    @item.save
+    @item.save(item_params)
     # binding.pry
     redirect_to admin_items_path
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update
-    redirect_to @item
-  end
-
-  def destroy
+    @item.update(item_params)
+    redirect_to admin_item_path
   end
 
   private
     def item_params
-        params.require(:item).permit(:name,:image,:price,:category_id,:description)
+        params.require(:item).permit(:name,:image,:price,:category_id,:description,:sale_status)
     end
   
-end
+  end

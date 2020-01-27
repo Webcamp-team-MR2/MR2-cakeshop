@@ -39,7 +39,7 @@ class Admin::CategoriesController < Admin::AdminapplicationsController
   	redirect_to admin_categories_path
   end
 
- private
+  private
   def category_params
      params.require(:category).permit(:sweets_name, :category_status)
   end
