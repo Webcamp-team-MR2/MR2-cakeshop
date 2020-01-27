@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :home do
-    #get 'homes/top'
+    root 'homes#top'
     get 'homes/about'
   end
 
