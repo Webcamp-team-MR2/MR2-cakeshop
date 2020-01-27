@@ -6,7 +6,8 @@
   ¥<%= @item.price*1.1.round(2) %>税込
   </h3>
 <%= form_for(@item_count) do |f| %>
-<%= f.label :count,  "数量"%>
+<%= f.hidden_field :item_id , :value => @item.id %>
+<%= f.label :count,  "数量" %>
 <%= f.select :count, [*1..10] %>
   <%= f.submit "カート内に追加" %>
   <% end %>

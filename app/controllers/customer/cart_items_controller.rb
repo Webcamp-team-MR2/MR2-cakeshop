@@ -4,7 +4,6 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
 
   def index
     @customer = current_customer
-      # binding.pry
     @cart_items = @customer.cart_items
   end
 
@@ -13,6 +12,7 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
 
   def create
     @cart_item = CartItem.new(cartitem_params)
+    # binding.pry
     @cart_item.customer.id = current_customer.id
     if @cart_item.save
       redirect_to cart_items_path
@@ -39,16 +39,3 @@ private
   def cartitem_params
       params.require(:cart_item).permit(:customer_id, :item_id, :count)
   end
-
-  # def create
-  #   @book = Book.new(book_params)
-  #   @book.user_id = current_user.id
-  #   if @book.save
-  #     redirect_to book_path(@book.id)
-  #   else
-  #     @books = Book.all
-  #     render :index
-  #   end
-  # end
-
-
