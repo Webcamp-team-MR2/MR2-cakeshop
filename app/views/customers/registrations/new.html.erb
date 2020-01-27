@@ -4,6 +4,26 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :"漢字(苗字)" %><br/>
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"漢字(名前)" %><br/>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"カナ(苗字)" %><br/>
+    <%= f.text_field :last_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"カナ(名前)" %><br/>
+    <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -19,6 +39,21 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :郵便番号 %><br/>
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :住所 %><br/>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号 %><br/>
+    <%= f.text_field :tel %>
   </div>
 
   <div class="actions">
