@@ -8,12 +8,12 @@
 	</tr>
 	<% @cart_items.each do |cart_item| %>
 
+
 	<tr align="center">
 		<td>
 			<%= cart_item.item.name %>
 			<%= attachment_image_tag cart_item.item, :image, :fill, 60, 60, class: "pull-left profile-thumb", fallback: "no_image.jpg" %>
 		</td>
-
 		<td><%= cart_item.item.price %></td>
 		<td><%= cart_item.count %></td>
 		<td><%= cart_item.item.price %></td>
@@ -21,11 +21,3 @@
 	</tr>
 	<% end %>
 </table>
-
-
-
-
-
-
-
-
