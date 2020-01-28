@@ -13,10 +13,10 @@
         <%= f.label :ジャンル %>
         <%= f.text_field :sweets_name %>
         <label>
-            <%= f.radio_button :category_status, 1 %>
+            <%= f.radio_button :category_status, 0 %>
             有効</label>
         <label>
-            <%= f.radio_button :category_status, 2 %>
+            <%= f.radio_button :category_status, 1 %>
             無効</label>
         <%= f.submit '追加', class:"submitbtn btn btn-primary glyphicon glyphicon-wrench btn-lg" %>
     <% end %>
@@ -36,7 +36,7 @@
                 <td><%= category.sweets_name %>
                 </td>
                 <td>
-                    <% if category.category_status == 1 %>
+                    <% if category.category_status == 0 %>
                         <p>有効</p>
                     <% else %>
                         <p>無効</p>
