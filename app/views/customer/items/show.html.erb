@@ -1,2 +1,15 @@
-<h1>Customer::Items#show</h1>
-<p>Find me in app/views/customer/items/show.html.erb</p>
+<div class = "col">
+  <%= attachment_image_tag @item, :image, size: "300x300", format: 'jpeg', class: "img-circle pull-left img", fallback: "no_image.jpg" %>
+  <h3><%= @item.name %></h3>
+  <h3><%= @item.description %></h3>
+  <h3>
+  ¥<%= @item.price*1.1.round(2) %>税込
+  </h3>
+	<%= form_for(@item_count) do |f| %>
+	<%= f.hidden_field :item_id , :value => @item.id %>
+	<%= f.hidden_field :customer_id , :value => @customer.id %>
+	<%= f.label :count,  "数量" %>
+	<%= f.select :count, [*1..10] %>
+	<%= f.submit "カート内に追加" %>
+  <% end %>
+</div>

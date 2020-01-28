@@ -1,4 +1,4 @@
 class Customer::CustomerapplicationsController < ApplicationController
-  layout 'customers'
+  # layout 'customers'
 
 end
