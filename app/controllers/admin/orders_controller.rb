@@ -17,8 +17,11 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   
   def item_update
     @order_item = OrderItem.find(params[:order_item_id])
-    @order_item.update(item_params)
-    redirect_to edit_admin_order_path(@order)
+    if @order_item.update(item_params)
+      redirect_to edit_admin_order_path(@order_item.order_id)
+    else
+
+    end
   end
 
   private
