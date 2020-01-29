@@ -21,7 +21,7 @@ def create
 
   if cart_item.item_id == params[:cart_item][:item_id].to_i
      cart_item.count += params[:cart_item][:count].to_i
-     cart_item.update(cartitem_params)
+     cart_item.update(cart_item)
     else
      @add_cart_item = CartItem.new(cartitem_params)
      @add_cart_item.save!
@@ -38,10 +38,9 @@ end
   end
 
   def destroy
-      @customer = current_customer
-      @cart_items = @customer.cart_items
-      @cart_item.destroy
-      redirect_to cart_items_path
+    @cart_item.item_id = params[:cart_item][:item_id].to_i
+    @cart_item.item.id.destroy
+    redirect_to cart_items_path
   end
   def all_destroy
     @customer = current_customer
