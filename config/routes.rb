@@ -28,6 +28,11 @@ Rails.application.routes.draw do
   end
 
   scope module: :customer do
+    resources :cart_items, except:[:show,:new]
+    delete 'cart_items', to: 'cart_items#all_destroy'
+  end
+
+  scope module: :customer do
     resources :orders, only:[:show,:index,:create]
     get 'orders/thanks'
   end
