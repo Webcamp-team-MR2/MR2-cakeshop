@@ -1,5 +1,8 @@
 class Admin::CustomersController < Admin::AdminapplicationsController
   def top
+    @order_counts = Order.where("created_at between '#{Date.today} 0:00:00' and '#{Date.today} 23:59:59'")
+    # @order_counts = Order.where(created_at: 1.day.ago.all_day)
+    
   end
 
   def show
