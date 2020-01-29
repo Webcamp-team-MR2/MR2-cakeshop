@@ -66,4 +66,8 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  namespace :admin do
+  get "searches/" => "searchwindows#index"
+  post "searches/" => "searchwindows#search", as: "search"
+  end
 end

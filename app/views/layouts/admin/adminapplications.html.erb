@@ -34,13 +34,16 @@
                         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                     </li>
                     <p></p>
-                    <div class="searchwindow"><%= text_field_tag :search %>
-                    <%= submit_tag 'Search', :name => nil %></div>
+                    <div class="searchwindow">
+                        <%= form_with(url: admin_search_path, method: :post, local: true) do %>
+                        <%= text_field_tag :search %>
+                        <%= submit_tag 'Search' %></div>
+                <% end %>
 
-                </ul>
-            <% end %>
-        </nav>
+            </ul>
+        <% end %>
+    </nav>
 
-        <%= yield %>
-    </body>
+    <%= yield %>
+</body>
 </html>
