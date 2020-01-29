@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     resources :orders, except:[:new,:show,:create,:destroy] do
       
       patch 'item_update/:order_item_id' => 'orders#item_update', as: 'update'
+      put 'item_update/:order_item_id' => 'orders#item_update'
     end
   end
 

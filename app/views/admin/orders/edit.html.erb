@@ -11,7 +11,7 @@
 <body>
   <h3>注文詳細画面</h3>
   <%= "購入者：" %>
-  <%= @order.customer.first_name + @order.customer.last_name %><br>
+  <%= link_to @order.customer.first_name + @order.customer.last_name , admin_customer_path(@order.customer_id) %><br>
   <%= "配送先：" %>
   <%= @order.address %><br>
   <%= "宛名：" %>
@@ -24,7 +24,7 @@
   <% end %>
   <br>
   <%= form_for (@order), url:admin_order_path do |f| %>
-  <%= f.select :order_status, [['入金待ち',0],['入金確認',1],['制作中',2],['制作完了',3],['制作完了',4]]%>
+  <%= f.select :order_status, [['入金待ち',0],['入金確認',1],['制作中',2],['発送準備中',3],['発送済み',4]]%>
   <%= f.submit '更新'%>
   <% end %>
 
@@ -39,9 +39,9 @@
     <% @order_items.each do |order_item| %>
     <tr>
       <td><%= order_item.item.name%></td>
-      <td><%= order_item.price%></td>
-      <td><%= order_item.count%></td>
-      <td><%= order_item.count * order_item.price%></td>
+      <td><%= order_item.price.to_s + "円" %></td>
+      <td><%= order_item.count .to_s + "個" %></td>
+      <td><%= (order_item.count * order_item.price).to_s + "円"%></td>
       <td><%= form_for (order_item), url:admin_order_update_path([order_item] ,order_item_id:order_item.id) do |f| %>
         <%= f.select :create_status, [['着手不可',0],['制作待ち',1],['制作中',2],['制作完了',3]]%>
         <%= f.submit '更新'%>
