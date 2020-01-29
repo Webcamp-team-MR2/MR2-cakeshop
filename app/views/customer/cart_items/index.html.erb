@@ -17,7 +17,7 @@
 		<td><%= cart_item.item.price %></td>
 		<td><%= cart_item.count %></td>
 		<td><%= cart_item.item.price %></td>
-		<td><%=link_to "削除する", cart_items_path, class: "btn btn-danger", method: :delete,"data-confirm" => "Are you sure?" %></td>
+		<td><%=link_to "削除する", cart_items_path(cart_item.item_id), class: "btn btn-danger", method: :delete,"data-confirm" => "Are you sure?" %></td>
 	</tr>
 	<% end %>
 </table>
