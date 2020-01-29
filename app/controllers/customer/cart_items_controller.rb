@@ -13,14 +13,18 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
 def create
   @customer = current_customer
   @cart_items = @customer.cart_items
+  unless @cart_items.present?
+    @add_cart_item = CartItem.new(cartitem_params)
+    @add_cart_item.save!
+  end
   @cart_items.each do |cart_item|
+
   if cart_item.item_id == params[:cart_item][:item_id].to_i
-    # binding.pry
      cart_item.count += params[:cart_item][:count].to_i
      cart_item.update(cartitem_params)
     else
      @add_cart_item = CartItem.new(cartitem_params)
-     @add_cart_item.save
+     @add_cart_item.save!
   end
   end
   redirect_to cart_items_path
@@ -40,7 +44,10 @@ end
       redirect_to cart_items_path
   end
   def all_destroy
-    
+    @customer = current_customer
+    @cart_items = @customer.cart_items
+    @cart_items.destroy_all
+    redirect_to cart_items_path
   end
 end
 
