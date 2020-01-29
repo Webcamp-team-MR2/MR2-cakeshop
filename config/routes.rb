@@ -12,10 +12,8 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
   }
 
-  root :to => 'home/homes#top'
-
   scope module: :customer do
-    resources :adresses, except:[:new,:show]
+    resources :addresses, except:[:new,:show]
   end
 
   scope module: :customer do
@@ -33,8 +31,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :customer do
+    get 'customers/with_draw' => "customers#with_draw"
     resources :customers, only:[:show,:edit,:update,:destroy]
-    get 'customers/with_draw'
   end
 
   scope module: :home do
