@@ -35,6 +35,13 @@ end
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cartitem_params)
+      flash[:notice] = "商品が追加されました!"
+      redirect_to cart_items_path
+    else
+      redirect_to cart_items_path
+    end
   end
 
   def destroy
