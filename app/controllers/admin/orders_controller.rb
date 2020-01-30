@@ -1,6 +1,18 @@
 class Admin::OrdersController < Admin::AdminapplicationsController
   def index
-    @orders = Order.all
+    rute = params[:page]
+
+    if rute == "1"
+      @orders = Order.all
+    elsif rute == "2"
+      range = Date.today.beginning_of_day..Date.today.end_of_day
+      @orders = Order.where(created_at: range)
+      # @orders = Order.where("created_at between '#{Date.today} 0:00:00' and '#{Date.today} 23:59:59'")
+    elsif rute == "3"
+      @orders = Order.where(customer_id: params[:customer_id])
+      #                    検索したいモデルのカラム名: params[:検索させたいパラメータ]　
+    end
+    
   end
 
   def edit
@@ -10,17 +22,17 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-    @order_items = @order.order_items
+    order = Order.find(params[:id])
+    order.update(order_params)
+    order_items = order.order_items
     
-    if @order.order_status == 1
-      @order_items.each do |f|
+    if order.order_status == 1
+      order_items.each do |f|
         f.create_status = 1
         f.update(order_item_params)
       end
     end
-    redirect_to edit_admin_order_path(@order)
+    redirect_to edit_admin_order_path(order)
   end
   
   def item_update
