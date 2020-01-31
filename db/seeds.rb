@@ -47,24 +47,24 @@ Order.create!(
  OrderItem.create!(
   [
    {
-    order_id: '6',
+    order_id: '7',
     item_id:'2',
-    price:'15000',
+    price:'7500',
     count: '2',
     create_status: '0',
    },
    {
-    order_id: '6',
+    order_id: '7',
     item_id:'2',
     price:'2000',
     count: '4',
     create_status: '0',
    },
    {
-    order_id: '6',
+    order_id: '7',
     item_id:'2',
     price:'15000',
-    count: '20',
+    count: '2',
     create_status: '0',
    }
   ]
