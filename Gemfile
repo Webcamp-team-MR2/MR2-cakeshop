@@ -72,3 +72,6 @@ gem 'ransack'
 
 gem 'rails-i18n'
 gem 'enum_help'
+
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'kaminari','~> 1.1.1'

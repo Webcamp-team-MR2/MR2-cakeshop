@@ -5,7 +5,7 @@ class Admin::ItemsController < Admin::AdminapplicationsController
 
   def index
     #ビューから値をもらってきてパーシャルで検索できるような書き方
-    @items = Item.all
+    @items = Item.all.page(params[:page])
   end
 
   def show

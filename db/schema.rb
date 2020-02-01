@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_01_30_094636) do
 
+
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
     t.string "postal_code"
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_094636) do
     t.integer "shipping_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_price"
     t.integer "item_count"
   end
 

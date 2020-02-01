@@ -13,3 +13,12 @@ ja:
         wait: "制作待ち"
         create: "制作中"
         completed: "制作完了"
+
+  views:
+    pagination:
+      first: 最初
+      last: 最後
+      previous: 前
+      next: 次
+      truncate: ...
+

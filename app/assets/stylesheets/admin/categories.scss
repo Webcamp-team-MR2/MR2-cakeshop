@@ -2,15 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .categorytitle {
+    margin-right: 20%;
+    margin-left: 15%;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 33px;
 }
+
+.categorysearch{
+    text-align: center;
+    margin-right: 20%;
+    margin-left: 15%;
+    margin-bottom: 33px;
+}
+
 .submitbtn{
     // height: ;
-    transition: all .5s;
+    transition: all .1s;
     transform: scale(0.9);
-    &:hover{
-        transform: scale(1.1);
-        transition: all .5s;
-    }
 }

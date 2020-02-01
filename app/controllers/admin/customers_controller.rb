@@ -12,7 +12,7 @@ class Admin::CustomersController < Admin::AdminapplicationsController
   end
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page])
   end
 
   def edit

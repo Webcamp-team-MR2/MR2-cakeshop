@@ -1,6 +1,25 @@
 // Place all the styles related to the admin/adminapplications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.searchwindow{
-    padding-left: 50%;
+.navbar-brand {
+    color: red;
+}
+
+.navbar {
+}
+
+.header-items {
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float:none;
+}
+
+.header-items a {
+    color: black;
+}
+
+.searchwindow {
+    padding-top: 1.5%;
+//     padding-left: 80%;
 }
