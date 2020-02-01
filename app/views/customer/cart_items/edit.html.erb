@@ -1,2 +1,24 @@
-<h1>Customer::CartItems#edit</h1>
-<p>Find me in app/views/customer/cart_items/edit.html.erb</p>
+<h2>購入情報入力</h2>
+
+<%= form_for(@order, url:cart_items_confirm_path) do |f| %>
+<h3>支払方法</h3>
+	<label><%= f.radio_button :pay_method, "0" %> クレジットカード </label><br>
+	<label><%= f.radio_button :pay_method, "1" %> 現金振込</label>
+<h3>お届け先</h3>
+ 	<label><%= f.radio_button :postal_code,:address,  value: "@customer.postal_code", value: "@customer.address", value:@name %> 自身の住所</label><br>
+ 	<% if radio_button.checked %>
+ 	<%= f.hidden_field :full_name, :value => @name %>
+ 	<%= f.hidden_field :address, :value => @customer.address%>
+ 	<% end %>
+
+
+
+
+ 	〒<%= @customer.postal_code + @customer.address %><br>
+ 	<%= @customer.last_name + @customer.first_name%>
+
+
+
+
+
+<% end %>

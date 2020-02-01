@@ -5,9 +5,11 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   def index
     @customer = current_customer
     @cart_items = @customer.cart_items
+    @total = 0
   end
 
   def confirm
+
   end
 
 def create
@@ -31,7 +33,10 @@ def create
 end
 
   def edit
-
+    @order = Order.new
+    @customer = current_customer
+    @name = ""
+    @name =  @customer.last_name + @customer.first_name
   end
 
   def update
