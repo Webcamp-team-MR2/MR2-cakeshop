@@ -1,7 +1,7 @@
 class Admin::OrdersController < Admin::AdminapplicationsController
   def index
     rute = params[:page]
-
+    #test
     if rute == "1"
       @orders = Order.all
       @pages = Order.all.page(params[:page])
