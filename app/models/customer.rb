@@ -14,4 +14,11 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :tel, presence: true
+  # validates :customer_status, inclusion: {in: [true, false]}
+  def active_for_authentication?
+    super && customer_status?
+  end
+  def inactive_message
+    customer_status? ? super : :with_draw
+  end
 end

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>  
   <head>
     <title>Mr2Cakeshop</title>
     <%= csrf_meta_tags %>
@@ -15,6 +17,10 @@
       </div>
         <nav class="col-md-9" style = "text-align: right;">
           <% if customer_signed_in? %>
+            <p>ようこそ
+            <%= current_customer.last_name %>
+            <%= current_customer.first_name %>
+            様</p>
             <h3>
             <%= link_to "トップページ", root_path %>
 
@@ -34,7 +40,7 @@
 
             <%= link_to "新規登録", new_customer_registration_path %>
 
-            <%= link_to "ログイン", new_customer_session_path, class:"btn btn-default" %>
+            <%= link_to "ログイン", new_customer_session_path %>
             </h3>
           <% end %>
         </nav>
@@ -44,20 +50,20 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <select name="area" class = "pull-left">
+      <select name="area" style = "font-size: 20px">
       <option value="none">ジャンル検索</option>
-      <option value="aoba">青葉区</option>
-      <option value="miyagino">宮城野区</option>
-      <option value="wakabayashi">若林区</option>
-      <option value="izumi">泉区</option>
-      <option value="taihaku">太白区</option>
+      <% @categories.each do |category| %>
+        <option><%= category.sweets_name %></option>
+    <% end %>
       </select>
-      <%= yield %>
     </div>
   </div>
-</body>
-<footer>
-  <div class = "col-lg-12" style = "background-color: yellow; text-align: right; color: red; height: 70px; font-size: 30px; line-height: 70px;">
+  </body>
+    <div class = "row">
+        <%= yield %>
+    </div>
+
+  <div class = "container-fluid" style = "background-color: yellow; text-align: right; color: red; height: 70px; font-size: 30px; line-height: 70px;">
   訪問して下さりありがとうございます!!
   </div>
-</footer>
+</html>
