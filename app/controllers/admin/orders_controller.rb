@@ -1,6 +1,6 @@
 class Admin::OrdersController < Admin::AdminapplicationsController
   def index
-    @orders = Order.all
+    @orders = Order.all.page(params[:page])
   end
 
   def edit

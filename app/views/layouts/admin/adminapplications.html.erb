@@ -11,37 +11,31 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid"></div>
-            <h2 class="navbar-brand" href="#">
-                <%= link_to "ながのCAKE", admin_customer_top_path %>
-            </h2>
-            <ul class="nav navbar-nav navbar-right">
-                <% if admin_signed_in? %>
-                    <li>
-                        <%= link_to "商品一覧", admin_items_path %>
-                    </li>
-                    <li>
-                        <%= link_to "会員一覧", admin_customers_path %>
-                    </li>
-                    <li>
-                        <%= link_to "注文履歴一覧", admin_orders_path %>
-                    </li>
-                    <li>
-                        <%= link_to "ジャンル管理", admin_categories_path %>
-                    </li>
-                    <li>
-                        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-                    </li>
-                    <p></p>
-                    <div class="searchwindow">
-                        <%= form_with(url: admin_search_path, method: :post, local: true) do %>
+        <nav class="navbar"  style="background-color: yellow;">
+            <div class="navar-header">
+                <%= link_to("ながのCAKE", admin_customer_top_path, {class: "navbar-brand"}) %>
+                <div class="nav navbar-nav header-items">
+                    <% if admin_signed_in? %>
+                        <li class="active">
+                            <%= link_to("商品一覧", admin_items_path, {class: "active"}) %></li>
+                        <li class="active">
+                            <%= link_to("会員一覧", admin_customers_path, {class: "active"}) %></li>
+                        <li class="active">
+                            <%= link_to("注文履歴一覧", admin_orders_path, {class: "active"})%></li>
+                        <li class="active">
+                            <%= link_to("ジャンル管理", admin_categories_path, {class: "active"})%></li>
+                        <li class="active">
+                            <%= link_to("ログアウト", destroy_admin_session_path, {method: :delete, class:
+                            "nav-item active"}) %></li>
+                </div>
+                    <div class="searchwindow navbar-right">
+                        <%= form_with(url: admin_search_path, method: :get, local: true) do %>
                         <%= text_field_tag :search %>
-                        <%= submit_tag 'Search' %></div>
+                        <%= submit_tag 'Search' %>
+                    </div>
                 <% end %>
-
-            </ul>
-        <% end %>
+            <% end %>
+        </div>
     </nav>
 
     <%= yield %>

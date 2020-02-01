@@ -69,3 +69,5 @@ gem 'jquery-rails'
 
 gem 'pry-byebug'
 gem 'ransack'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'kaminari','~> 1.1.1'

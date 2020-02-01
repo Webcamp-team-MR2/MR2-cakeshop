@@ -1,7 +1,7 @@
 class Admin::CategoriesController < Admin::AdminapplicationsController
   def index
     @category = Category.new
-    @categories = Category.all
+    @categories = Category.where(category_status: 0).page(params[:page])
   end
 
   def edit
