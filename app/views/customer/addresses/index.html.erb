@@ -1,2 +1,46 @@
-<h1>Customer::Addresses#index</h1>
-<p>Find me in app/views/customer/addresses/index.html.erb</p>
+  <div class = "row">
+    <div class = "col-md-5">
+      <%= form_for(@address_new) do |f| %>
+			<h3>配送先登録一覧/登録</h3>
+      <table class="table table-bordered">
+		    <tr>
+            <th>郵便番号</th>
+            <td><%= f.text_field :postal_code %></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td><%= f.text_field :address %></td>
+        </tr>
+        <tr>
+            <th>宛名</th>
+            <td><%= f.text_field :full_name %></td>
+        </tr>
+      </table>
+		      <%= f.submit "登録する", class: "btn btn-primary" %>
+		    <% end %>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-9">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+              <th></th>
+              </tr>
+          </thead>
+      <% @addresses.each do |address|%>
+          <tr>
+            <td><%= address.postal_code %></td>
+            <td><%= address.address %></td>
+            <td><%= address.full_name %></td>
+            <td>
+            <%= link_to '編集する', edit_address_path(address), class: "btn btn-primary btn-block" %>
+            <%= link_to '削除する', address_path(address), class: "btn btn-primary btn-block", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
+          </tr>
+		    <% end %>
+      </table>
+    </div>
+  </div>
