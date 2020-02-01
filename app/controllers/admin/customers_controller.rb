@@ -1,7 +1,7 @@
 class Admin::CustomersController < Admin::AdminapplicationsController
   def top
-    @order_counts = Order.where("created_at between '#{TimeWithZone.today} 0:00:00' and '#{TimeWithZone.today} 23:59:59'")
-    # @order_counts = Order.where(created_at: 1.day.ago.all_day)
+    # @order_counts = Order.where("created_at between '#{TimeWithZone.today} 0:00:00' and '#{TimeWithZone.today} 23:59:59'")
+    # # @order_counts = Order.where(created_at: 1.day.ago.all_day)
     
   end
 
@@ -10,7 +10,7 @@ class Admin::CustomersController < Admin::AdminapplicationsController
   end
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page])
   end
 
   def edit
