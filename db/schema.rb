@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_113348) do
+ActiveRecord::Schema.define(version: 2020_01_30_094636) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_113348) do
     t.integer "create_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "subtotal"
   end
 
   create_table "orders", force: :cascade do |t|

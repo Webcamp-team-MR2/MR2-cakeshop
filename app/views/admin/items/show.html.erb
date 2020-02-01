@@ -9,7 +9,7 @@
 <body>
   <h3>商品詳細画面</h3>
     <%= @item.id%>
-    <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg'%>
+    <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg',class: "img-circle pull-left img", fallback: "no_image.jpg"%>
     <%= @item.name%>
     <%= @item.price.to_s + "円"%>
     <%= @item.category.sweets_name%>
