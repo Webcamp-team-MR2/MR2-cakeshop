@@ -20,7 +20,7 @@
             <td><%= link_to order.created_at.to_s(:datetime_jp) ,edit_admin_order_path(order) %>
             <td><%= order.customer.first_name + order.customer.last_name%></td>
             <td><%= order.item_count %></td>
-            <td><%= order.order_status %></td>
+            <td><%= order.order_status_i18n %></td>
           </tr>
         <% end %>
       </table>

@@ -1,6 +1,10 @@
 class OrderItem < ApplicationRecord
 	belongs_to :item
 	belongs_to :order
-	# enum order_status: {"入金待ち":0,"入金確認":1,"発送準備":2,"発送完了":3}
-	enum order_status: { wait: 0, konf: 1, pri: 2, comp: 3}
+	enum create_status: {
+		ipossible:0,
+		wait:     1,
+		create:   2,
+		completed:3
+	}, _prefix: true #接尾辞
 end

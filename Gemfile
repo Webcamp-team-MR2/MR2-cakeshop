@@ -69,3 +69,6 @@ gem 'jquery-rails'
 
 gem 'pry-byebug'
 gem 'ransack'
+
+gem 'rails-i18n'
+gem 'enum_help'
