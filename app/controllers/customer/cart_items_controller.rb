@@ -5,9 +5,11 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   def index
     @customer = current_customer
     @cart_items = @customer.cart_items
+    @total = 0
   end
 
   def confirm
+
   end
 
 def create
@@ -21,7 +23,7 @@ def create
 
   if cart_item.item_id == params[:cart_item][:item_id].to_i
      cart_item.count += params[:cart_item][:count].to_i
-     cart_item.update(cart_item)
+     cart_item.save!
     else
      @add_cart_item = CartItem.new(cartitem_params)
      @add_cart_item.save!
@@ -31,15 +33,26 @@ def create
 end
 
   def edit
-
+    @order = Order.new
+    @customer = current_customer
+    @name = ""
+    @name =  @customer.last_name + @customer.first_name
   end
 
   def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cartitem_params)
+      flash[:notice] = "商品が追加されました!"
+      redirect_to cart_items_path
+    else
+      redirect_to cart_items_path
+    end
   end
 
   def destroy
-    @cart_item.item_id = params[:cart_item][:item_id].to_i
-    @cart_item.item.id.destroy
+    # binding.pry
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
     redirect_to cart_items_path
   end
   def all_destroy
