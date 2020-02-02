@@ -58,6 +58,7 @@ class Admin::OrdersController < Admin::AdminapplicationsController
       end
       redirect_to edit_admin_order_path(@order_item.order_id)
     end
+  end
     # if @order_item.update(item_params)
     #   if @order_item.create_status == 2
     #     @order_item.order.update(order_status: 2)
@@ -72,7 +73,7 @@ class Admin::OrdersController < Admin::AdminapplicationsController
     #   end
     #   redirect_to edit_admin_order_path(@order_item.order_id)
     # end
-  end
+  
 
   private
     def order_params

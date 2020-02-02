@@ -34,7 +34,7 @@
 Order.create!(
  [
   {
-   customer_id: '2',
+   customer_id: '1',
    postal_code:'3333333',
    address:'japan,saitama',
    full_name: '山城　駿',
