@@ -50,6 +50,9 @@
     </tr>
     <% end %>
   </table>
+  <%="商品合計" + @total_price.to_s + "円" %><br>
+  <%="送料800円" %><br>
+  <%="請求金額合計" + (@total_price + 800).to_s + "円" %>
 </body>
 
 </html>
