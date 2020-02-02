@@ -1,21 +1,29 @@
-<div class="container">
-    <h2>検索結果</h2>
-    <div class='row'>
-        <% @items.each do |item| %>
-            <div class="col-md-4">
-                <div class="container container-m">
-                    <div class="card-deck">
-                        <div class="card">
-                            <%= attachment_image_tag item,:image,:fill,150,150,format: 'jpeg'%>
-                            <div class="card-body">
-                                <h3 class="card-title"><%= link_to item.name, admin_item_path(item) %></h3>
-                                <p class="card-discription"><%= item.description %></p>
-                                <div class="card-price"><%= item.price.to_s + "円(税抜)" %></div>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ながのCAKE</title>
+    </head>
+    <div class="container">
+        <h2>検索結果</h2>
+        <div class='row'>
+            <% @items.each do |item| %>
+                <div class="col-md-4">
+                    <div class="container container-m">
+                        <div class="card-deck">
+                            <div class="card">
+                                <%= attachment_image_tag item,:image,:fill,150,150,format: 'jpeg'%>
+                                <div class="card-body">
+                                    <h3 class="card-title"><%= link_to item.name, admin_item_path(item) %></h3>
+                                    <p class="card-discription"><%= item.description %></p>
+                                    <div class="card-price"><%= item.price.to_s + "円(税抜)" %></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <% end %>
+            <% end %>
+        </div>
     </div>
-</div> 

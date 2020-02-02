@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <h3>注文詳細画面</h3>
+  <h2 class="ordertitle">注文詳細画面</h2>
   <%= "購入者：" %>
   <%= link_to @order.customer.first_name + @order.customer.last_name , admin_customer_path(@order.customer_id) %><br>
   <%= "配送先：" %>
