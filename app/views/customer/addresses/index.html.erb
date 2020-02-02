@@ -31,14 +31,21 @@
               <th></th>
               </tr>
           </thead>
+          <tr>
+            <td><%= current_customer.postal_code %></td>
+            <td><%= current_customer.address %></td>
+            <td><%= current_customer.last_name %>
+            <%= current_customer.first_name %></td>
+            <td></td>
+          </tr>
       <% @addresses.each do |address|%>
           <tr>
             <td><%= address.postal_code %></td>
             <td><%= address.address %></td>
             <td><%= address.full_name %></td>
             <td>
-            <%= link_to '編集する', edit_address_path(address), class: "btn btn-primary btn-block" %>
-            <%= link_to '削除する', address_path(address), class: "btn btn-primary btn-block", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
+            <%= link_to '編集する', edit_address_path(address), class: "btn btn-primary" %>
+            <%= link_to '削除する', address_path(address), class: "btn btn-primary", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
           </tr>
 		    <% end %>
       </table>
