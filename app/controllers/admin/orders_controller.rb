@@ -40,9 +40,10 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   def item_update
     @order_item = OrderItem.find(params[:order_item_id])
     if @order_item.update(item_params)
-      @order_item.create_status_create?
-      @order_item.order.order_status_creating!
-      @order_item.create_status_completed?
+      if @order_item.create_status == "create"
+        @order_item.order.order_status_creating!
+      end
+      if @order_item.create_status == "completed"
         @order_item.order.order_items.each do |f|
           if f.create_status == "completed"
           else
@@ -53,6 +54,7 @@ class Admin::OrdersController < Admin::AdminapplicationsController
       end
       redirect_to edit_admin_order_path(@order_item.order_id)
     end
+  end
     # if @order_item.update(item_params)
     #   if @order_item.create_status == 2
     #     @order_item.order.update(order_status: 2)
