@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   scope module: :home do
     root 'homes#top'
     get 'homes/about'
+    get 'homes/category/:id' => "homes#category",as:'category'
   end
 
   namespace :admin do
