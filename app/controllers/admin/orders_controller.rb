@@ -21,6 +21,10 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   def edit
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    @total_price = 0
+    @order_items.each do |f|
+      @total_price = (f.price * f.count) + @total_price
+    end
     # @orders = OrderItem.where(params[:order_id])
   end
 
