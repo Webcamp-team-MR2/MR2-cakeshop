@@ -9,27 +9,28 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def confirm
-    if params[:name] == "0"
-      flash[:notice] = "0"
+    if params[:pay_method].to_i == 0
+      @pay_method = "クレジットカード"
+    else @pay_method = "現金振込み"
     end
   end
+
 
 def create
   @customer = current_customer
   @cart_items = @customer.cart_items
-  unless @cart_items.present?
-    @add_cart_item = CartItem.new(cartitem_params)
-    @add_cart_item.save!
-  end
+  x = 0
   @cart_items.each do |cart_item|
-  if cart_item.item_id == params[:cart_item][:item_id].to_i
-     cart_item.count += params[:cart_item][:count].to_i
-     cart_item.save!
-    else
+    if cart_item.item_id == params[:cart_item][:item_id].to_i
+      cart_item.count += params[:cart_item][:count].to_i
+      cart_item.save!
+      x =1
+    end
+  end
+  if x == 0
      @add_cart_item = CartItem.new(cartitem_params)
      @add_cart_item.save!
-  end
-  end
+   end
   redirect_to cart_items_path
 end
 
