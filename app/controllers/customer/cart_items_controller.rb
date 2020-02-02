@@ -9,7 +9,9 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def confirm
-
+    if params[:name] == "0"
+      flash[:notice] = "0"
+    end
   end
 
 def create
@@ -20,7 +22,6 @@ def create
     @add_cart_item.save!
   end
   @cart_items.each do |cart_item|
-
   if cart_item.item_id == params[:cart_item][:item_id].to_i
      cart_item.count += params[:cart_item][:count].to_i
      cart_item.save!
@@ -35,14 +36,15 @@ end
   def edit
     @order = Order.new
     @customer = current_customer
-    @name = ""
     @name =  @customer.last_name + @customer.first_name
+    @addresses = current_customer.addresses
+
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cartitem_params)
-      flash[:notice] = "商品が追加されました!"
+      flash[:notice] = "変更されました!"
       redirect_to cart_items_path
     else
       redirect_to cart_items_path
@@ -50,7 +52,6 @@ end
   end
 
   def destroy
-    # binding.pry
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path

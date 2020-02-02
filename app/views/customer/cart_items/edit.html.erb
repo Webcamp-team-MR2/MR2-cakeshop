@@ -1,24 +1,38 @@
 <h2>購入情報入力</h2>
+  <%= form_tag(cart_items_confirm_path, method: :get) do %>
+   <h3>支払方法</h3>
+    <label>
+		 <%= radio_button_tag :pay_method, "0" %> クレジットカード
+	  </label><br>
+	  <label>
+	  	<%= radio_button_tag :pay_method, "1" %> 現金振込
+	  </label>
 
-<%= form_for(@order, url:cart_items_confirm_path) do |f| %>
-<h3>支払方法</h3>
-	<label><%= f.radio_button :pay_method, "0" %> クレジットカード </label><br>
-	<label><%= f.radio_button :pay_method, "1" %> 現金振込</label>
-<h3>お届け先</h3>
- 	<label><%= f.radio_button :postal_code,:address,  value: "@customer.postal_code", value: "@customer.address", value:@name %> 自身の住所</label><br>
- 	<% if radio_button.checked %>
- 	<%= f.hidden_field :full_name, :value => @name %>
- 	<%= f.hidden_field :address, :value => @customer.address%>
- 	<% end %>
+   <div>
+	  <h3>お届け先</h3>
+	   <div>
+	 	 <label>
+	 		<%= radio_button_tag :name, "0"  %> 自身の住所
+	 	 </label><br>
+	 	 〒<%= @customer.postal_code + @customer.address %><br>
+	 	 <%= @customer.last_name + @customer.first_name%><br><br>
+	  </div>
 
+	  <div>
+	 	 <label>
+	 		<%= radio_button_tag :name, "1"  %> 登録済み住所から選択
+	 	 </label>
+	 	 <%= collection_select @order, :postal_code, @addresses, :id, :postal_code_address_full_name %><br><br>
+	  </div>
 
-
-
- 	〒<%= @customer.postal_code + @customer.address %><br>
- 	<%= @customer.last_name + @customer.first_name%>
-
-
-
-
-
-<% end %>
+	  <div>
+	   <label>
+	  	<%= radio_button_tag :name, "2"  %> 新しいお届け先
+	   </label><br>
+	   郵便番号<%= text_field_tag :postal_code %>ハイフンなし<br>
+	   住所　　<%= text_field_tag :address %><br>
+	   宛名　　<%= text_field_tag :full_name %><br><br>
+	   <%= submit_tag "確認画面へ進む" %>
+  <% end %>
+   </div>
+</div>
