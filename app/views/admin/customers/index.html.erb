@@ -1,27 +1,38 @@
-<h2>会員一覧</h2>
-<table class="table table-fover">
-    <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-    </tr>
-    <tbody>
-        <% @customers.each do |customer| %>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ながのCAKE-顧客一覧-</title>
+    </head>
+
+    <div class="col-md-8 col-md-offset-2">
+        <h2 class="customertitle">会員一覧</h2>
+        <table class="table table-fover" >
             <tr>
-                <td><%= customer.id %></td>
-                <td><%= link_to customer.last_name + customer.first_name,
-                    admin_customer_path(customer)%></td>
-                <td><%= customer.email %></td>
-                <td>
-                    <% if customer.customer_status == true %>
-                        <p>有効</p>
-                    <% else %>
-                        <p>退会済み</p>
-                    <% end %>
-                </td>
+                <th>会員ID</th>
+                <th>氏名</th>
+                <th>メールアドレス</th>
+                <th>ステータス</th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
-<%= paginate @customers %>
+            <tbody>
+                <% @customers.each do |customer| %>
+                    <tr>
+                        <td><%= customer.id %></td>
+                        <td><%= link_to customer.last_name + customer.first_name,
+                            admin_customer_path(customer)%></td>
+                        <td><%= customer.email %></td>
+                        <td>
+                            <% if customer.customer_status == true %>
+                                <p>有効</p>
+                            <% else %>
+                                <p>退会済み</p>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <%= paginate @customers %>
+    </div>

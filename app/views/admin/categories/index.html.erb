@@ -1,15 +1,24 @@
-<% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
-<% end %>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>ながのCAKEージャンル管理ー</title>
+    </head>
 
-<div class="col-md-9 col-md-offset-1">
-<div class="col-md-offset-1">
+    <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+    <% end %>
 
-    <h2 class="categorytitle"> ジャンル追加・一覧</h2>
+    <div class="col-md-8 col-md-offset-2">
 
-    <div class="field">
-        <div class="categorysearch">
-            <%= form_for(@category, url:admin_categories_path) do |f| %>
+        <h2 class="categorytitle">
+            ジャンル追加・一覧</h2>
+
+        <div class="field">
+            <div class="categorysearch">
+                <%= form_for(@category, url:admin_categories_path) do |f| %>
                 <%= f.label :ジャンル %>
                 <%= f.text_field :sweets_name %>
                 <label>
@@ -18,38 +27,39 @@
                 <label>
                     <%= f.radio_button :category_status, 1 %>
                     無効</label>
-                <%= f.submit '追加', class:"submitbtn btn btn-primary glyphicon glyphicon-wrench btn-lg" %>
+                <%= f.submit '追加', class:"submitbtn btn btn-primary glyphicon glyphicon-wrench
+                btn-lg" %>
             <% end %>
         </div>
-    </div>
 
-    <table class='table'>
-        <thead>
-            <tr>
-                <th>ジャンル</th>
-                <th>状態</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @categories.each do |category| %>
-            <% if category.category_status == 0 %>
+        <table class='table'>
+            <thead>
                 <tr>
-                    <td><%= category.sweets_name %>
-                    </td>
-                    <td>
-                    <p style="width:70px">有効</p>
-                    </td>
-                    <td>
-                    <p style="width:10px"><%= link_to "編集する", edit_admin_category_path(category), class:"btn btn-default glyphicon glyphicon-wrench" %>
-                    </p>
-                    </td>
+                    <th>ジャンル</th>
+                    <th>状態</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @categories.each do |category| %>
+                    <% if category.category_status == 0 %>
+                        <tr>
+                            <td><%= category.sweets_name %>
+                            </td>
+                            <td>
+                                <p style="width:70px">有効</p>
+                            </td>
+                            <td>
+                                <p style="width:10px"><%= link_to "編集する", edit_admin_category_path(category),
+                                    class:"btn btn-default glyphicon glyphicon-wrench" %>
+                                </p>
+                            </td>
                         <% else %>
                         <% end %>
-                <% end %>
+                    <% end %>
                 </tr>
-        </tbody>
-    </table>
-    <%= paginate @categories %>
+            </tbody>
+        </table>
+        <%= paginate @categories %>
     </div>
 </div>
