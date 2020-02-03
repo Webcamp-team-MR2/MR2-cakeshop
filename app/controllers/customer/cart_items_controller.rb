@@ -9,6 +9,8 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def confirm
+    @cart_items = current_customer.cart_items
+    @total = 0
     if params[:pay_method].to_i == 0
       @pay_method = "クレジットカード"
     else @pay_method = "現金振込み"
