@@ -55,6 +55,19 @@
 </header>
 <body>
   <div class="container-fluid">
+
+    <div class="row">
+      <select name="area" style = "font-size: 20px">
+      <option value="none">ジャンル検索</option>
+      <% @categories.each do |category| %>
+        <option><%= category.sweets_name %></option>
+    <% end %>
+      </select>
+      <%= flash[:notice] %>
+    </div>
+  </div>
+  </body>
+
     <div class = "row">
         <%= yield %>
     </div>
