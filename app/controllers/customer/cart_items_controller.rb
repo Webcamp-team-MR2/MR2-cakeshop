@@ -14,9 +14,10 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
     else @pay_method = "現金振込み"
     end
     if params[:name].to_i == 0
-      @customer = current_customer
-      @self_address = @customer.postal_code + " " + @customer.address + " " + @customer.last_name + " " + @customer.first_name
+      @self_address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + " " + current_customer.first_name
     elsif params[:name].to_i == 1
+      @address = Address.find(params[:address_id])
+      @registered_address = @address.postal_code + " " + @address.address + " " + current_customer.last_name + " " + current_customer.first_name
     end
   end
 
