@@ -14,7 +14,8 @@
 			<td><%= (cart_item.item.price*1.1).round(0) %></td>
 			<td><%= cart_item.count %></td>
 			<td><%= (cart_item.item.price*1.1).round(0)*cart_item.count %></td>
-			<% @total = @total + (cart_item.item.price*1.1).round(0)*cart_item.count %>
+			<% @total_price = @total_price + (cart_item.item.price*1.1).round(0)*cart_item.count %>
+			<% @total_count = @total_count + cart_item.count %>
 		</tr>
 		<% end %>
 	</table>
@@ -22,9 +23,9 @@
 
 <div>
 	<table class="table table-bordered">
-		<tr><th>送料</th><td><%= 800 %></td></tr>
-		<tr><th>商品合計</th><td><%= @total %></td></tr>
-		<tr><th>請求金額</th><td><%= 800+@total %></td></tr>
+		<tr><th>送料</th><td><%= @shipping_fee %></td></tr>
+		<tr><th>商品合計</th><td><%= @total_price %></td></tr>
+		<tr><th>請求金額</th><td><%= @shipping_fee + @total_price %></td></tr>
 	</table>
 </div>
 
@@ -32,13 +33,9 @@
 <%= @pay_method %>
 
 <h3>お届け先</h3>
-<%= @self_address %>
-
-<%= @registered_address %>
-
-<%= @new_postal_code %> <%= @new_address%><br>
-<%= @new_full_name %>
+<%= @postal_code %> <%= @address %><br>
+<%= @full_name %>
 
 <div>
-	<%=link_to "購入を確定する", :controller=> 'orders', :action=> 'create', class: "btn btn-primary" %>
+	<%=link_to "購入を確定する", orders_path(pay_method: @pay_method, postal_code: @postal_code, address: @address, full_name: @full_name, item_count: @total_count, total_price: @total_price, shipping_fee: @shipping_fee), method: :post  %>
 </div>

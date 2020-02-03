@@ -13,9 +13,8 @@ class Customer::OrdersController < Customer::CustomerapplicationsController
   end
 
   def create
-
   end
-end
+
   private
   def cartitem_params
     params.require(:cartitem).permit( :customer_id, :item_id, :count )
@@ -26,3 +25,4 @@ end
   def orderitem_params
     params.require(:orderitem).permit( :order_id, :item_id, :price, :count, :create_status, )
   end
+end
