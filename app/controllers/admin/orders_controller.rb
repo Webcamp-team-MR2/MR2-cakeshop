@@ -1,18 +1,15 @@
 class Admin::OrdersController < Admin::AdminapplicationsController
   def index
-    rute = params[:rute]
-    #test
-    if rute == "1"
       @orders = Order.all.page(params[:page])
-    elsif rute == "2"
-      range = Date.today.beginning_of_day..Date.today.end_of_day
-      @orders = Order.where(created_at: range).page(params[:page])
-      # @orders = Order.where("created_at between '#{Date.today} 0:00:00' and '#{Date.today} 23:59:59'")
-    elsif rute == "3"
-      @orders = Order.where(customer_id: params[:customer_id]).page(params[:page])
-      #                    検索したいモデルのカラム名: params[:検索させたいパラメータ]　
-    end
-    
+  end
+
+  def period_index
+    range = Date.today.beginning_of_day..Date.today.end_of_day
+    @orders = Order.where(created_at: range).page(params[:page])
+  end
+
+  def customer_index
+    @orders = Order.where(params[:id]).page(params[:page])
   end
 
   def edit
