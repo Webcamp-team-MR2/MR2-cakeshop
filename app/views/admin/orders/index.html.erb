@@ -7,25 +7,28 @@
         <title>Document</title>
     </head>
     <body>
-        <h2 class="ordertitle">注文履歴一覧</h2>
-        <div class="col-md-8 col-md-offset-2">
-            <table class="table table-fover">
-                <tr>
-                    <th>購入日時</th>
-                    <th>購入者</th>
-                    <th>注文個数</th>
-                    <th>注文ステータス</th>
-                </tr>
-                <% @orders.each do |order| %>
+        <div class="container">
+            <h2 class="ordertitle">注文履歴一覧</h2>
+            <div class="col-md-8 col-md-offset-2">
+                <table class="table table-fover">
                     <tr>
-                        <td><%= link_to order.created_at.to_s(:datetime_jp) ,edit_admin_order_path(order) %>
+                        <th>購入日時</th>
+                        <th>購入者</th>
+                        <th>注文個数</th>
+                        <th>注文ステータス</th>
+                    </tr>
+                    <% @orders.each do |order| %>
+                        <tr>
+                            <td><%= link_to order.created_at.to_s(:datetime_jp) ,edit_admin_order_path(order) %>
                             <td><%= order.customer.last_name + order.customer.first_name%></td>
                             <td><%= order.item_count %></td>
                             <td><%= order.order_status_i18n %></td>
                         </tr>
                     <% end %>
-            </table>
-            <%= paginate @orders %>
+
+                </table>
+                <%= paginate @orders %>
+            </div>
         </div>
-        </body>
-    </html>
+    </body>
+</html>

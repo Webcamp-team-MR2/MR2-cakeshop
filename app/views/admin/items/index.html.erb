@@ -7,12 +7,13 @@
         <title>ながのCAKEー商品一覧-</title>
     </head>
     <body>
-        <div class="col-md-10 col-md-offset-1">
-            <h2 class="itemtitle">商品一覧</h2>
-            <%= link_to new_admin_item_path do %>
-            <span class="far fa-plus-square fa-4x "></span>
-        <% end %>
-            <table class="table table-fover" >
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1">
+                <h2 class="itemtitle">商品一覧</h2>
+                <%= link_to new_admin_item_path do %>
+                <span class="far fa-plus-square fa-4x "></span>
+            <% end %>
+            <table class="table table-fover">
                 <tr>
                     <th>ID</th>
                     <th>画像</th>
@@ -45,5 +46,6 @@
                 </table>
                 <%= paginate @items %>
             </div>
+        </div>
     </body>
 </html>
