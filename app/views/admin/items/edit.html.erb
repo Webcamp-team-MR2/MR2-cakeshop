@@ -8,40 +8,42 @@
     </head>
 
     <body>
-        <h2 class="itemtitle">商品編集</h2>
-        <%= form_for [:admin, @item] do |f| %>
-        <div class="col-md-2 col-md-offset-4">
-            <div class="form-grop">
-                <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg',class:
-                "img-circle pull-left img", fallback: "no_image.jpg"%>
-                <%= f.label :"商品画像" %><br>
-                <%= f.attachment_field :image %>
+        <div class="container">
+            <h2 class="itemtitle">商品編集</h2>
+            <%= form_for [:admin, @item] do |f| %>
+            <div class="col-md-3 col-md-offset-3">
+                <div class="form-grop">
+                    <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg',class:
+                    "img-circle pull-left img", fallback: "no_image.jpg"%>
+                    <%= f.label :"商品画像" %><br>
+                    <%= f.attachment_field :image %>
+                </div>
             </div>
-        </div>
-        <div class="col-md-1">
-            <div class="form-group">
-                <%= f.label :"商品名" %><br>
-                <%= f.text_field :name%>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <%= f.label :"商品名" %><br>
+                    <%= f.text_field :name%>
+                </div>
+                <div class="form-group">
+                    <%= f.label :"カテゴリー" %><br>
+                    <%= f.collection_select :category_id, Category.all, :id, :sweets_name %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :"税抜価格" %><br>
+                    <%= f.text_field :price%>
+                </div>
+                <div class="form-group">
+                    <%= f.label :"説明文" %><br>
+                    <%= f.text_area :description %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :"販売ステータス" %><br>
+                    <%= f.select :sale_status, [['販売中',true],['売り切れ',false]], :selectted => "--
+                    選択して下さい --" %>
+                </div>
+                <%= f.submit '商品登録'%>
+                <%end%>
             </div>
-            <div class="form-group">
-                <%= f.label :"カテゴリー" %><br>
-                <%= f.collection_select :category_id, Category.all, :id, :sweets_name %>
-            </div>
-            <div class="form-group">
-                <%= f.label :"税抜価格" %><br>
-                <%= f.text_field :price%>
-            </div>
-            <div class="form-group">
-                <%= f.label :"説明文" %><br>
-                <%= f.text_area :description %>
-            </div>
-            <div class="form-group">
-                <%= f.label :"販売ステータス" %><br>
-                <%= f.select :sale_status, [['販売中',true],['売り切れ',false]], :selectted => "--
-                選択して下さい --" %>
-            </div>
-            <%= f.submit '商品登録'%>
-        <%end%>
-    </div>
-</body>
+         </div>
+    </body>
 </html>
