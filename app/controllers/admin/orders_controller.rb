@@ -1,20 +1,15 @@
 class Admin::OrdersController < Admin::AdminapplicationsController
   def index
-    rute = params[:page]
-    #test
-    if rute == "1"
       @orders = Order.all.page(params[:page])
-    elsif rute == "2"
-      range = Date.today.beginning_of_day..Date.today.end_of_day
-      @orders = Order.where(created_at: range).page(params[:page])
-      # @pages = Order.where(created_at: range).page(params[:page])
-      @orders = Order.where("created_at between '#{Date.today} 0:00:00' and '#{Date.today} 23:59:59'")
-    elsif rute == "3"
-      @orders = Order.where(customer_id: params[:customer_id]).page(params[:page])
-      # @pages = Order.where(customer_id: params[:customer_id]).page(params[:page])
-      #                    検索したいモデルのカラム名: params[:検索させたいパラメータ]　
-    end
-    
+  end
+
+  def period_index
+    range = Date.today.beginning_of_day..Date.today.end_of_day
+    @orders = Order.where(created_at: range).page(params[:page])
+  end
+
+  def customer_index
+    @orders = Order.where(params[:id]).page(params[:page])
   end
 
   def edit
@@ -42,9 +37,10 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   def item_update
     @order_item = OrderItem.find(params[:order_item_id])
     if @order_item.update(item_params)
-      @order_item.create_status_create?
-      @order_item.order.order_status_creating!
-      @order_item.create_status_completed?
+      if @order_item.create_status == "create"
+        @order_item.order.order_status_creating!
+      end
+      if @order_item.create_status == "completed"
         @order_item.order.order_items.each do |f|
           if f.create_status == "completed"
           else
@@ -55,6 +51,7 @@ class Admin::OrdersController < Admin::AdminapplicationsController
       end
       redirect_to edit_admin_order_path(@order_item.order_id)
     end
+  end
     # if @order_item.update(item_params)
     #   if @order_item.create_status == 2
     #     @order_item.order.update(order_status: 2)

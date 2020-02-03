@@ -10,15 +10,8 @@
         <div class="container">
             <div class="col-md-8 col-md-offset-4">
 
-                <h2>本日の注文件数
-                    <%=link_to @order_counts.count ,admin_orders_path(page: 2) %>
-                    件</h2>
-
-                <div class="topcalender">
-                    <%= date_field_tag 'post[start_on]', nil %>
-                    <%= date_field_tag 'post[end_on]', nil %>
-                </div>
-            </div>
-        </div>
+        <h2>本日の注文件数
+            <%=link_to @order_counts.count ,admin_period_index_path%>
+        件</h2>
     </body>
 </html>

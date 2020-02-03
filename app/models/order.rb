@@ -9,4 +9,9 @@ class Order < ApplicationRecord
 		shipping:     3,
 		shipped:      4,
 	}, _prefix: true #接尾辞
+
+	enum pay_method: {
+		credit:         0,
+		bank:           1,
+	}, _prefix: true #接尾辞
 end
