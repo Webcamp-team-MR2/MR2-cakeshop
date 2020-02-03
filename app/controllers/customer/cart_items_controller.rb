@@ -18,6 +18,9 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
     elsif params[:name].to_i == 1
       @address = Address.find(params[:address_id])
       @registered_address = @address.postal_code + " " + @address.address + " " + current_customer.last_name + " " + current_customer.first_name
+    else @new_postal_code = params[:postal_code].to_i
+         @new_address = params[:address]
+         @new_full_name = params[:full_name]
     end
   end
 

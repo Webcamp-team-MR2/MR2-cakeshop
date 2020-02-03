@@ -21,10 +21,10 @@
 	  <div>
 	 	 <label>
 	 		<%= radio_button_tag :name, "1"  %> 登録済み住所から選択
-	 	 </label><br><br>
+	 	 </label><br>
 	 	 <%= select_tag :address_id, options_for_select(
 	 	 	@addresses.map{|address| [address.postal_code_address_full_name, address.id]}) %>
-	  </div>
+	  </div><br>
 
 	  <div>
 	   <label>

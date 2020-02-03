@@ -6,6 +6,8 @@
 
 <h3>お届け先</h3>
 <%= @self_address %><br>
-<%= @registered_address %>
-<!--
-current_customerの登録済み住所(addressモデル)の中からparams[:address_id]のidと一致するものを抽出する -->
+
+<%= @registered_address %><br>
+
+〒<%= @new_postal_code %> <%= @new_address%><br>
+<%= @new_full_name %>
