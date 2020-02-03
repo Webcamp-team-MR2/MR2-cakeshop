@@ -6,4 +6,10 @@ class Home::HomesController < ApplicationController
 
   def about
   end
+
+  def category
+    @category = Category.find(params[:id])
+    @category_item = Item.where(category_id: params[:id])
+  end
 end
+

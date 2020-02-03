@@ -47,9 +47,12 @@ Rails.application.routes.draw do
   scope module: :home do
     root 'homes#top'
     get 'homes/about'
+    get 'homes/category/:id' => "homes#category",as:'category'
   end
 
   namespace :admin do
+    get 'period_index' => 'orders#period_index'
+    get 'customer_index/:id' => 'orders#customer_index'
     resources :orders, except:[:new,:show,:create,:destroy] do
       
       patch 'item_update/:order_item_id' => 'orders#item_update', as: 'update'

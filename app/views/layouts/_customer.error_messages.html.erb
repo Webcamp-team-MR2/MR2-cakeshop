@@ -1,0 +1,12 @@
+<% if current_customer.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% current_customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- bookのところは、render先の,の後とおなじにする
+後に続く変数は、エラーメッセージに関する変数を入れる。 -->

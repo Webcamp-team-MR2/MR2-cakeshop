@@ -9,25 +9,58 @@
 </head>
 
 <body>
-  <h3>注文詳細画面</h3>
-  <%= "購入者：" %>
-  <%= link_to @order.customer.first_name + @order.customer.last_name , admin_customer_path(@order.customer_id) %><br>
-  <%= "配送先：" %>
-  <%= @order.address %><br>
-  <%= "宛名：" %>
-  <%= @order.full_name %><br>
-  <%= "支払い方法：" %>
-  <% if @order.pay_method %>
+<div class="container">
+  <h2 class="ordertitle">注文詳細画面</h2>
+  <div class="row">
+ <div class="col-md-8 pull-left">
+ <table>
+ <tr>
+  <th><%= "購入者" %></th>
+  <td><%= link_to @order.customer.first_name + @order.customer.last_name , admin_customer_path(@order.customer_id) %></td>
+  </tr>
+  <tr>
+  <th><%= "配送先" %></th>
+  <td><%= @order.address %></td>
+  </tr>
+  <tr>
+  <th><%= "宛名" %></th>
+  <td><%= @order.full_name %></td>
+  </tr>
+  <tr>
+  <th><%= "支払い方法" %></th>
+  <td><% if @order.pay_method %>
   <%= "銀行振込" %>
   <% else %>
   <%= "クレジットカード" %>
-  <% end %>
-  <br>
-  <%= form_for (@order), url:admin_order_path do |f| %>
-  <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]}%>
-  <%= f.submit '更新'%>
-  <% end %>
+  <% end %></td>
+  </tr>
+<tr>
+<th>
 
+
+  <%= form_for (@order), url:admin_order_path do |f| %>
+  <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]}%></th>
+  <td><%= f.submit '更新'%></td>
+  <% end %>
+  </tr>
+  </table>
+  <div class="col-md-3 pull-right">
+  <table>
+  <tr>
+  <td><%="商品合計" + @total_price.to_s + "円" %></td>
+  </tr>
+  <tr>
+  <td><%="送料800円" %></td>
+  </tr>
+  <tr>
+  <td><%="請求金額合計" + (@total_price + 800).to_s + "円" %></td>
+  </tr>
+  </table>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-9 col-md-offset-1">
   <table class="table table-fover">
     <tr>
       <th>商品名</th>
@@ -50,6 +83,8 @@
     </tr>
     <% end %>
   </table>
+  </div>
+  </div>
 </body>
 
 </html>

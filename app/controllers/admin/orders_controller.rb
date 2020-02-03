@@ -1,23 +1,24 @@
 class Admin::OrdersController < Admin::AdminapplicationsController
   def index
-    rute = params[:page]
+      @orders = Order.all.page(params[:page])
+  end
 
-    if rute == "1"
-      @orders = Order.all
-    elsif rute == "2"
-      range = Date.today.beginning_of_day..Date.today.end_of_day
-      @orders = Order.where(created_at: range)
-      # @orders = Order.where("created_at between '#{Date.today} 0:00:00' and '#{Date.today} 23:59:59'")
-    elsif rute == "3"
-      @orders = Order.where(customer_id: params[:customer_id])
-      #                    検索したいモデルのカラム名: params[:検索させたいパラメータ]　
-    end
-    
+  def period_index
+    range = Date.today.beginning_of_day..Date.today.end_of_day
+    @orders = Order.where(created_at: range).page(params[:page])
+  end
+
+  def customer_index
+    @orders = Order.where(params[:id]).page(params[:page])
   end
 
   def edit
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    @total_price = 0
+    @order_items.each do |f|
+      @total_price = (f.price * f.count) + @total_price
+    end
     # @orders = OrderItem.where(params[:order_id])
   end
 
@@ -36,9 +37,10 @@ class Admin::OrdersController < Admin::AdminapplicationsController
   def item_update
     @order_item = OrderItem.find(params[:order_item_id])
     if @order_item.update(item_params)
-      @order_item.create_status_create?
-      @order_item.order.order_status_creating!
-      @order_item.create_status_completed?
+      if @order_item.create_status == "create"
+        @order_item.order.order_status_creating!
+      end
+      if @order_item.create_status == "completed"
         @order_item.order.order_items.each do |f|
           if f.create_status == "completed"
           else
@@ -49,6 +51,7 @@ class Admin::OrdersController < Admin::AdminapplicationsController
       end
       redirect_to edit_admin_order_path(@order_item.order_id)
     end
+  end
     # if @order_item.update(item_params)
     #   if @order_item.create_status == 2
     #     @order_item.order.update(order_status: 2)

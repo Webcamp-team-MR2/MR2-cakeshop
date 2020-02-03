@@ -1,13 +1,11 @@
+<%= render 'layouts/customer.error_messages', customer: current_customer %>
+
 <h1>会員編集画面</h1>
   <div class = col-md-5>
     <h4>登録情報編集</h4>
     <%= link_to "退会する", customers_with_draw_path, class:"btn btn-danger",style:"margin-right: 30px; margin-bottom: 10px;"%>
     <%= form_for (current_customer) do |f| %>
     <table class="table table-bordered">
-      <tr>
-          <th>顧客ID</th>
-          <td><%= f.text_field :id %></td>
-      </tr>
       <tr>
           <th>氏名</th>
           <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>

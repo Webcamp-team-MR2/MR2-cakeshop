@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mr2Cakeshop</title>
+        <title></title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
-
+        <script src="https://kit.fontawesome.com/0038349627.js" crossorigin="anonymous"></script>
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track':
         'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
     <body>
-        <nav class="navbar"  style="background-color: yellow;">
+        <nav class="navbar" style="background-color: yellow;">
             <div class="navar-header">
-                <%= link_to("ながのCAKE", admin_customer_top_path, {class: "navbar-brand"}) %>
+                <h1><%= link_to("ながのCAKE", admin_customer_top_path, {class: "navbar-brand"}) %></h1>
                 <div class="nav navbar-nav header-items">
                     <% if admin_signed_in? %>
                         <li class="active">
                             <%= link_to("商品一覧", admin_items_path, {class: "active"}) %></li>
                         <li class="active">
-                            <%= link_to("会員一覧", admin_customers_path(page: 1), {class: "active"}) %></li>
+                            <%= link_to("会員一覧", admin_customers_path, {class: "active"}) %></li>
                         <li class="active">
-                            <%= link_to("注文履歴一覧", admin_orders_path, {class: "active"})%></li>
+                            <%= link_to("注文履歴一覧", admin_orders_path(rute: 1), {class: "active"})%></li>
                         <li class="active">
                             <%= link_to("ジャンル管理", admin_categories_path, {class: "active"})%></li>
                         <li class="active">
                             <%= link_to("ログアウト", destroy_admin_session_path, {method: :delete, class:
-                            "nav-item active"}) %></li>
-                </div>
+                            "active"}) %></li>
+                    </div>
                     <div class="searchwindow navbar-right">
                         <%= form_with(url: admin_search_path, method: :get, local: true) do %>
                         <%= text_field_tag :search %>
