@@ -1,3 +1,5 @@
+  <%= render 'layouts/address.error_messages', address: @address_new %>
+  <h3><%=  notice %></h3>
   <div class = "row">
     <div class = "col-md-5">
       <%= form_for(@address_new) do |f| %>
@@ -36,7 +38,7 @@
             <td><%= current_customer.address %></td>
             <td><%= current_customer.last_name %>
             <%= current_customer.first_name %></td>
-            <td></td>
+            <td><%= link_to '編集する', edit_customer_path(current_customer), class: "btn btn-success" %></td>
           </tr>
       <% @addresses.each do |address|%>
           <tr>
@@ -44,8 +46,8 @@
             <td><%= address.address %></td>
             <td><%= address.full_name %></td>
             <td>
-            <%= link_to '編集する', edit_address_path(address), class: "btn btn-primary" %>
-            <%= link_to '削除する', address_path(address), class: "btn btn-primary", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
+            <%= link_to '編集する', edit_address_path(address), class: "btn btn-success" %>
+            <%= link_to '削除する', address_path(address), class: "btn btn-danger", method: :delete, data: { confirm: '本当に消しますか？' } %></td>
           </tr>
 		    <% end %>
       </table>
