@@ -5,3 +5,7 @@
 <%= @pay_method %>
 
 <h3>お届け先</h3>
+<%= @self_address %><br>
+<%= @address_id %>
+<!--
+current_customerの登録済み住所(addressモデル)の中からparams[:address_id]のidと一致するものを抽出する -->

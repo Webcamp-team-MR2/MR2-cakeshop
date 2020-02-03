@@ -21,8 +21,9 @@
 	  <div>
 	 	 <label>
 	 		<%= radio_button_tag :name, "1"  %> 登録済み住所から選択
-	 	 </label>
-	 	 <%= collection_select @order, :postal_code, @addresses, :id, :postal_code_address_full_name %><br><br>
+	 	 </label><br><br>
+	 	 <%= select_tag :address_id, options_for_select(
+	 	 	@addresses.map{|address| [address.postal_code_address_full_name, address.id]}) %>
 	  </div>
 
 	  <div>
@@ -36,3 +37,10 @@
   <% end %>
    </div>
 </div>
+
+
+
+
+
+
+

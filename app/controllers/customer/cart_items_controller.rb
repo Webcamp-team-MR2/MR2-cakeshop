@@ -13,6 +13,11 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
       @pay_method = "クレジットカード"
     else @pay_method = "現金振込み"
     end
+    if params[:name].to_i == 0
+      @customer = current_customer
+      @self_address = @customer.postal_code + " " + @customer.address + " " + @customer.last_name + " " + @customer.first_name
+    elsif params[:name].to_i == 1
+    end
   end
 
 
@@ -69,8 +74,4 @@ private
   def cartitem_params
       params.require(:cart_item).permit(:customer_id, :item_id, :count)
   end
-
-
-
-
 
