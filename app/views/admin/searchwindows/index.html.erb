@@ -6,12 +6,11 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>ながのCAKE</title>
     </head>
-    <div class="container">
-        <h2>検索結果</h2>
-        <div class='row'>
+    <body>
+        <div class="container">
+        <h2><%= params[:search].to_s + "の検索結果" %></h2>
             <% @items.each do |item| %>
                 <div class="col-md-4">
-                    <div class="container container-m">
                         <div class="card-deck">
                             <div class="card">
                                 <%= attachment_image_tag item,:image,:fill,150,150,format: 'jpeg'%>
@@ -23,7 +22,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
             <% end %>
+            <%= paginate @items %>
         </div>
-    </div>
+    </body>
+</html>

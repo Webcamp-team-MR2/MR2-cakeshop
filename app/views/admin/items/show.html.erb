@@ -7,41 +7,43 @@
         <title>ながのCAKE-商品詳細</title>
     </head>
     <body>
-        <h2 class="itemtitle">商品詳細</h2>
-        <div class="col-md-2 col-md-offset-4">
-            <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg',class:
-            "img-circle pull-left img", fallback: "no_image.jpg"%>
+        <div class="container">
+            <h2 class="itemtitle">商品詳細</h2>
+            <div class="col-md-3 col-md-offset-3">
+                <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg',class:
+                "img-circle pull-left img", fallback: "no_image.jpg"%>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>商品名</label><br>
+                    <%= @item.name%>
+                </div>
+                <div class="form-group">
+                    <label>商品ID</label><br>
+                    <%= @item.id%>
+                </div>
+                <div class="form-group">
+                    <label>税抜価格</label><br>
+                    <%= @item.price.to_s + "円"%>
+                </div>
+                <div class="form-group">
+                    <label>カテゴリー</label><br>
+                    <%= @item.category.sweets_name%>
+                </div>
+                <div class="form-group">
+                    <label>説明文</label><br>
+                    <%= @item.description%>
+                </div>
+                <div class="form-group">
+                    <label>販売ステータス</label><br>
+                    <% if @item.sale_status == true %>
+                        <p>販売中</p>
+                    <% else %>
+                        <p>売り切れ</p>
+                    <% end %>
+                    <%= link_to "商品編集", edit_admin_item_path(@item) %>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label>商品名</label><br>
-                <%= @item.name%>
-            </div>
-            <div class="form-group">
-                <label>商品ID</label><br>
-                <%= @item.id%>
-            </div>
-            <div class="form-group">
-                <label>税抜価格</label><br>
-                <%= @item.price.to_s + "円"%>
-            </div>
-            <div class="form-group">
-                <label>カテゴリー</label><br>
-                <%= @item.category.sweets_name%>
-            </div>
-            <div class="form-group">
-                <label>説明文</label><br>
-                <%= @item.description%>
-            </div>
-            <div class="form-group">
-                <label>販売ステータス</label><br>
-                <% if @item.sale_status == true %>
-                    <p>販売中</p>
-                <% else %>
-                    <p>売り切れ</p>
-                <% end %>
-                <%= link_to "商品編集", edit_admin_item_path(@item) %>
-            </div>
-
-        </body>
-    </html>
+    </body>
+</html>

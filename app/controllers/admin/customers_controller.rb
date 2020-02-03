@@ -4,9 +4,6 @@ class Admin::CustomersController < Admin::AdminapplicationsController
     @order_counts = Order.where(created_at: range)
     @start_time = ""
     @end_time = ""
-    
-    binding.pry
-
     # @order_counts = Order.where("created_at between '#{Date.today} 0:00:00' and '#{Date.today} 23:59:59'")
     # @order_counts = Order.where(created_at: 1.day.ago.all_day)
     

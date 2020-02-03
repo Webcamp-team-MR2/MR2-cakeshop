@@ -34,11 +34,11 @@
 Order.create!(
  [
   {
-   customer_id: '2',
+   customer_id: '1',
    postal_code:'3333333',
    address:'japan,saitama',
    full_name: '山城　駿',
-   order_status: '0',
+   order_status: 'wait',
    pay_method: '0',
    shipping_fee:'0',
   }
@@ -47,25 +47,25 @@ Order.create!(
  OrderItem.create!(
   [
    {
-    order_id: '7',
+    order_id: '2',
     item_id:'2',
     price:'7500',
     count: '2',
-    create_status: '0',
+    create_status: 'ipossible',
    },
    {
-    order_id: '7',
+    order_id: '2',
     item_id:'2',
     price:'2000',
     count: '4',
-    create_status: '0',
+    create_status: 'ipossible',
    },
    {
-    order_id: '7',
+    order_id: '2',
     item_id:'2',
     price:'15000',
     count: '2',
-    create_status: '0',
+    create_status: 'ipossible',
    }
   ]
  )
