@@ -5,7 +5,7 @@ class Address < ApplicationRecord
 		self.postal_code + " " + self.address+ " " + self.full_name
 	end
 
-	validates :postal_code, format: { with: /\A[0-9０-９]+\z/}
+	validates :postal_code, format: { with: /\A[0-9０-９]+\z/, message: "を数値で入力してください"}
   validates :address, presence: true
   validates :full_name, presence: true
 
