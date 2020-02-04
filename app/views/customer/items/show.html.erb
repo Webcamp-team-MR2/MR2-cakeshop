@@ -1,8 +1,8 @@
 <div class = "col">
   <%= attachment_image_tag @item, :image, size: "300x300", format: 'jpeg', class: "img pull-left img", fallback: "no_image.jpg" %>
-  <h3><%= @item.name %></h3>
-  <h3><%= @item.description %></h3>
-  <h3>
+  <h3 class = "name"><%= @item.name %></h3>
+  <h3 class = "description"><%= @item.description %></h3>
+  <h3 class = "price">
   ¥<%= @item.price*1.1.round(0) %>税込
   </h3>
 

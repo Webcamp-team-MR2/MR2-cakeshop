@@ -7,8 +7,21 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: lemonchiffon;
+  
 }
 footer {
   margin-top: auto;
+}
+h3 {
+  color: maroon;
+}
+
+.link {
+  color: white;
+}
+.category {
+  color: maroon;
+}
+.price {
+  color: maroon;
 }
