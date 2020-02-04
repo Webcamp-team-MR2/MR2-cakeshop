@@ -6,98 +6,61 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Category.create!(
-#   [
-#     {
-#       sweets_name: 'cake',
-#       category_status: '0',
-#     }
-#   ]
-
-# Item.create!(
-#   [
-#     {
-#       image_id: '',
-#       price: '1100',
-#       name: 'いちごのショートケーキ',
-#       category_id: '56',
-#     },
-#     {
-#       image_id: '',
-#       price: '330',
-#       name: 'チーズタルト',
-#       category_id: '55',
-#     }
-#   ]
-# )
-# )
-Order.create!(
- [
-  {
-   customer_id: '1',
-   postal_code:'3333333',
-   address:'japan,saitama',
-   full_name: '山城　駿',
-   order_status: 'wait',
-   pay_method: '0',
-   shipping_fee:'0',
-  }
- ]
-)
- OrderItem.create!(
+Category.create!(
   [
-   {
-    order_id: '2',
-    item_id:'2',
-    price:'7500',
-    count: '2',
-    create_status: 'ipossible',
-   },
-   {
-    order_id: '2',
-    item_id:'2',
-    price:'2000',
-    count: '4',
-    create_status: 'ipossible',
-   },
-   {
-    order_id: '2',
-    item_id:'2',
-    price:'15000',
-    count: '2',
-    create_status: 'ipossible',
-   }
-  ]
- )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CartItem.create!(
-  [
-    # {
-    #   item_id: '1',
-    #   customer_id: '1',
-    #   count: '1',
-    # },
     {
-      item_id: '2',
-      customer_id: '1',
-      count: '2',
+      sweets_name: 'cake',
+      category_status: "0"
+    },
+    {
+      sweets_name: 'candy',
+      category_status: "0"
+    },
+    {
+      sweets_name: 'cookie',
+      category_status: "0"
     }
   ]
 )
-
+Item.create!(
+  [
+    }
+  ]
+)
+Order.create!(
+  [
+    {
+      customer_id: '1',
+      postal_code: "www",
+      address: "ddd",
+      full_name: "eee",
+      order_status: "0",
+      pay_method: "0",
+      shipping_fee: "800"
+    }
+  ]
+)
+OrderItem.create!(
+  [
+    {
+      order_id: '1',
+      item_id: "1",
+      price: "800",
+      count: "2",
+      create_status: "0",
+    {
+      order_id: '1',
+      item_id: "2",
+      price: "300",
+      count: "1",
+      create_status: "0",
+    },
+    {
+      order_id: '1',
+      item_id: "3",
+      price: "500",
+      count: "5",
+      create_status: "0",
+    }
+  ]
+)
