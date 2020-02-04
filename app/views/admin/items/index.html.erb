@@ -27,8 +27,8 @@
                 <% @items.each do |item| %>
                     <tr>
                         <td><%= item.id%>
-                            <td><%= attachment_image_tag item,:image,:fill,100,100,format: 'jpeg',class:
-                                "img-circle pull-left img", fallback: "no_image.jpg"%></td>
+                            <td><%= attachment_image_tag item,:image,:fill,130,130,format: 'jpeg',class:
+                                "image", fallback: "no_image.jpg"%></td>
                             <td><%= link_to item.name ,admin_item_path(item)%></td>
                             <td><%= item.price.to_s + "円" %></td>
                             <td><%= item.category.sweets_name%></td>

@@ -8,12 +8,14 @@
     </head>
     <body>
         <div class="container">
-        <h2><%= params[:search].to_s + "の検索結果" %></h2>
-            <% @items.each do |item| %>
-                <div class="col-md-4">
+            <div class="row">
+                <h2><%= params[:search].to_s + "の検索結果" %></h2>
+                <% @items.each do |item| %>
+                    <div class="col-xs-4">
                         <div class="card-deck">
                             <div class="card">
-                                <%= attachment_image_tag item,:image,:fill,150,150,format: 'jpeg'%>
+                                <%= attachment_image_tag item,:image,:fill,130,130,format: 'jpeg', class:
+                                "image", fallback: "no_image.jpg"%>
                                 <div class="card-body">
                                     <h3 class="card-title"><%= link_to item.name, admin_item_path(item) %></h3>
                                     <p class="card-discription"><%= item.description %></p>
@@ -22,7 +24,8 @@
                             </div>
                         </div>
                     </div>
-            <% end %>
+                <% end %>
+            </div>
             <%= paginate @items %>
         </div>
     </body>

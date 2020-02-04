@@ -1,14 +1,15 @@
 class Admin::SearchwindowsController < Admin::AdminapplicationsController
   def index
     path = Rails.application.routes.recognize_path(request.referer)
+
     if params[:search] == "" || params[:search] == nil
-    redirect_to controller: path[:controller], action: path[:action]
+    redirect_to controller: path[:controller], action: path[:action], id: path[:id]
     else
-      split_keyword = params[:search].split(/[[:blank:]]+/)
       @items = []
+      split_keyword = params[:search].split(/[[:blank:]]+/)
       split_keyword.each do |search|
-    next if search == ""
-      @items += Item.where('name LIKE(?)', "%#{search}%").paginate_array(@item).page(1).per(10)
+      @items += Item.where('name LIKE(?)', "%#{search}%")
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(5)
       end
       @items.uniq!
     end
