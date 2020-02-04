@@ -2,7 +2,7 @@ class Customer::AddressesController < Customer::CustomerapplicationsController
   before_action :current_customer
 
   def edit
-    @address_new = Address.find(params[:id])
+    @address = Address.find(params[:id])
     
   end
 
@@ -27,9 +27,9 @@ class Customer::AddressesController < Customer::CustomerapplicationsController
   end
 
   def update
-    @address_new = Address.find(params[:id])
-    @address_new.customer_id = current_customer.id
-    if @address_new.update(address_params)
+    @address = Address.find(params[:id])
+    @address.customer_id = current_customer.id
+    if @address.update(address_params)
       flash[:notice] = "配送先の内容を更新しました"
       redirect_to addresses_path
     else

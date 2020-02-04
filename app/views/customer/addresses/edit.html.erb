@@ -1,13 +1,13 @@
-<%= render 'layouts/address.error_messages', address: @address %>
+<%= render 'layouts/error_messages', error: @address %>
 
 <h1>宛先編集画面</h1>
 <div class = col-md-5>
     <h4>宛先情報編集</h4>
-    <%= form_for (@address_new) do |f| %>
+    <%= form_for (@address) do |f| %>
     <table class="table table-bordered">
       <tr>
             <th>郵便番号</th>
-            <td><%= f.text_field :postal_code %></td>
+            <td><%= f.text_field :postal_code, autofocus: true %></td>
         </tr>
         <tr>
             <th>住所</th>
