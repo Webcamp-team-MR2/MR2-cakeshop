@@ -9,20 +9,28 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def confirm
+    @customer_id = current_customer.id
     @cart_items = current_customer.cart_items
-    @total = 0
+    @shipping_fee = 800  ##ここ送料！！
+    @total_price = 0
+    @total_count = 0
     if params[:pay_method].to_i == 0
       @pay_method = "クレジットカード"
     else @pay_method = "現金振込み"
     end
     if params[:name].to_i == 0
-      @self_address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + " " + current_customer.first_name
+      @postal_code = current_customer.postal_code
+      @address = current_customer.address
+      @full_name = current_customer.last_name + current_customer.first_name
     elsif params[:name].to_i == 1
-      @address = Address.find(params[:address_id])
-      @registered_address = @address.postal_code + " " + @address.address + " " + current_customer.last_name + " " + current_customer.first_name
-    else @new_postal_code = params[:postal_code].to_i
-         @new_address = params[:address]
-         @new_full_name = params[:full_name]
+      selected = Address.find(params[:address_id])
+      @postal_code = selected.postal_code
+      @address = selected.address
+      @full_name = selected.full_name
+    else
+      @postal_code = params[:postal_code].to_i
+      @address = params[:address]
+      @full_name = params[:full_name]
     end
   end
 
