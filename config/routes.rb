@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :customer do
+    get 'searchwindows/index',as: "search"
+  end
   namespace :admin do
     get 'searchwindow/index'
     get 'searchwindow/search'

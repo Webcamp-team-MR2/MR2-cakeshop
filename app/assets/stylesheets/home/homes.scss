@@ -2,3 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+}
+footer {
+  margin-top: auto;
+}
+h3 {
+  color: maroon;
+}
+
+.link {
+  color: white;
+}
+.category {
+  color: maroon;
+}
+.price {
+  color: maroon;
+}

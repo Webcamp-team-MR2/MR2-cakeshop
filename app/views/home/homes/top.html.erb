@@ -1,31 +1,24 @@
 
-<% @items.each do |item| %>
-<div class = "col-md-3" style="background-color:red;">
-  <%= attachment_image_tag item, :image, size: "200x200", format: 'jpeg', class: "img", fallback: "no_image.jpg" %><br>
-  <%= link_to item_path(item) do %>
-  <i><%= item.name %></i><br>
-  <% end %>
-  <i>¥<%= item.price %>  税抜</i>
-</div>
-  <% end %>
 <div class="col-md-3" >
   <table class="table">
-      <h3>ジャンル検索</h3>
+      <h3 style = "color: maroon; text-align: center;">ジャンル検索</h3>
       <% @categories.each do |category| %>
       <tr>
-         <td style = "font-size: 30px;"><%= link_to category.sweets_name,category_path(category.id) %>
+         <td style = "font-size: 30px;"><%= link_to category.sweets_name,category_path(category.id),:class => "category" %>
         </td>
       </tr>
     <% end %>
   </table>
 </div>
+<div class = "col-md-9">
   <% @items.each do |item| %>
-<div class = "col-md-3" style="background-color:red;">
-  <%= attachment_image_tag item, :image, size: "200x200", format: 'jpeg', class: "img", fallback: "no_image.jpg" %><br>
-  <%= link_to item_path(item) do %>
-  <h4><%= item.name %></h4><br>
+  <div class = "col-md-3">
+    <%= attachment_image_tag item, :image, size: "200x200", format: 'jpeg', class: "img", fallback: "no_image.jpg" %><br>
+    <%= link_to item_path(item) do %>
+    <h4 class = "name"><%= item.name %></h4>
+    <% end %>
+    <h4 class = "price" >¥<%= item.price %>  税抜</h4>
+  </div>
   <% end %>
-  <h4>¥<%= item.price %>  税抜</h4>
 </div>
-  <% end %>
 

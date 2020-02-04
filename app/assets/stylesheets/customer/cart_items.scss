@@ -1,3 +1,21 @@
 // Place all the styles related to the customer/cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.col-md-7 {
+  text-align: right;
+  margin-top: 10px;
+}
+.col-md-offset-5 col-md-3 {
+  text-align: right;
+}
+td {
+  height: 50px;
+  text-align: center;
+  margin-top: 20px;
+}
+.total {
+  text-align: center;
+}
+.button {
+  text-align: center;
+}
