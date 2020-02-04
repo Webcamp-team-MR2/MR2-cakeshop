@@ -9,6 +9,7 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def confirm
+    @customer_id = current_customer.id
     @cart_items = current_customer.cart_items
     @shipping_fee = 800  ##ここ送料！！
     @total_price = 0

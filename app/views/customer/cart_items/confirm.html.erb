@@ -35,7 +35,6 @@
 <h3>お届け先</h3>
 <%= @postal_code %> <%= @address %><br>
 <%= @full_name %>
-
 <div>
-	<%=link_to "購入を確定する", orders_path(pay_method: @pay_method, postal_code: @postal_code, address: @address, full_name: @full_name, item_count: @total_count, total_price: @total_price, shipping_fee: @shipping_fee), method: :post  %>
+	<%=link_to "購入を確定する", orders_path(@order, params: { order: {pay_method: @pay_method, postal_code: @postal_code, address: @address, full_name: @full_name, item_count: @total_count, total_price: @total_price, shipping_fee: @shipping_fee, customer_id: @customer_id}}), :method => :post  %>
 </div>

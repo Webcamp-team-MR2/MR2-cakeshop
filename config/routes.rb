@@ -31,8 +31,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :customer do
+    get 'orders/thanks', to: 'orders#thanks',as: 'orders_thanks'
     resources :orders, only:[:show,:index,:create]
-    get 'orders/thanks'
   end
 
   scope module: :customer do
