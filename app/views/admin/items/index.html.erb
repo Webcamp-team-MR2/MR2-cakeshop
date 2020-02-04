@@ -25,23 +25,26 @@
                     <th></th>
                 </tr>
                 <% @items.each do |item| %>
-                    <tr>
-                        <td><%= item.id%>
-                            <td><%= attachment_image_tag item,:image,:fill,130,130,format: 'jpeg',class:
-                                "image", fallback: "no_image.jpg"%></td>
-                            <td><%= link_to item.name ,admin_item_path(item)%></td>
-                            <td><%= item.price.to_s + "円" %></td>
-                            <td><%= item.category.sweets_name%></td>
-                            <td><%= item.description%></td>
-                            <td>
-                                <% if item.sale_status == true %>
-                                    <%= "販売中" %>
-                                <% else %>
-                                    <%= "売り切れ" %>
-                                <% end %>
-                            </td>
-                            <td><%= link_to "商品編集", edit_admin_item_path(item) %></td>
-                        </tr>
+                    <% if item.category.category_status == 0 %>
+                        <tr>
+                            <td><%= item.id%>
+                                <td><%= attachment_image_tag item,:image,:fill,100,100,format: 'jpeg',class:
+                                    "img-circle pull-left img", fallback: "no_image.jpg"%></td>
+                                <td><%= link_to item.name ,admin_item_path(item)%></td>
+                                <td><%= item.price.to_s + "円" %></td>
+                                <td><%= item.category.sweets_name%></td>
+                                <td><%= item.description%></td>
+                                <td>
+                                    <% if item.sale_status == 0 %>
+                                        <%= "販売中" %>
+                                    <% else %>
+                                        <%= "売り切れ" %>
+                                    <% end %>
+                                </td>
+                                <td><%= link_to "商品編集", edit_admin_item_path(item) %></td>
+                            </tr>
+                            <% else %>
+                        <% end %>
                     <% end %>
                 </table>
                 <%= paginate @items %>

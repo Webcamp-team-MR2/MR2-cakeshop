@@ -13,7 +13,7 @@ class Customer::CustomersController < Customer::CustomerapplicationsController
 
   def update
     if current_customer.update(customer_params)
-      flash[:notice] = "編集に成功しました"
+      flash[:notice] = "登録情報の編集が完了しました"
       redirect_to customer_path
     else
       render :edit
@@ -23,6 +23,7 @@ class Customer::CustomersController < Customer::CustomerapplicationsController
   def destroy
       current_customer.update(customer_status: false)
       # current_customer.update(customer_params)
+      flash[:notice] = "ご利用いただきまして誠にありがとうございました"
       redirect_to destroy_customer_session_path, method: :delete
   end
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>  
+<html>
   <head>
     <title>Mr2Cakeshop</title>
     <%= csrf_meta_tags %>
@@ -10,19 +10,25 @@
   </head>
 
 <header>
-  <div class="container-fluid" style="height: 70px; background-color: yellow;">
+  <div class="container-fluid" style="height: 80px; background-color: lightcoral;">
     <div class="row" style="height: 70px;">
       <div class="col-md-3" style="text-align: left;">
-        <h1 style = "color: red; font_size: 30px; padding: auto;">ながのCAKE</h1>
+        <h1 style = "color: yellow; font_size: 30px; padding: auto;">ながのCAKE</h1>
       </div>
-        <nav class="col-md-9" style = "text-align: right;">
+      <div class="col-md-2" style = "padding-top: 20px;">
+        <%= form_tag(root_path,:method => 'get') do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </div>
+        <nav class="col-md-7" style = "text-align: right;">
           <% if customer_signed_in? %>
-            <p>ようこそ
+            <h5>ようこそ
             <%= current_customer.last_name %>
             <%= current_customer.first_name %>
-            様</p>
+            様</h5>
             <h3>
-            <%= link_to "トップページ", root_path %>
+            <%= link_to "ホーム", root_path %>
 
             <%= link_to "ながのCAKEとは??", homes_about_path %>
 
@@ -34,7 +40,7 @@
             </h3>
             <% else %>
             <h3>
-            <%= link_to "トップページ", root_path %>
+            <%= link_to "ホーム", root_path %>
 
             <%= link_to "ながのCAKEとは??", homes_about_path %>
 
@@ -49,6 +55,7 @@
 </header>
 <body>
   <div class="container-fluid">
+
     <div class="row">
       <select name="area" style = "font-size: 20px">
       <option value="none">ジャンル検索</option>
@@ -56,14 +63,18 @@
         <option><%= category.sweets_name %></option>
     <% end %>
       </select>
+      <%= flash[:notice] %>
     </div>
   </div>
   </body>
+
     <div class = "row">
         <%= yield %>
     </div>
+  </div>
+  </body>
 
-  <div class = "container-fluid" style = "background-color: yellow; text-align: right; color: red; height: 70px; font-size: 30px; line-height: 70px;">
+  <div class = "container-fluid" style = "background-color: lightcoral; text-align: right; color: yellow; height: 80px; font-size: 30px; line-height: 70px;">
   訪問して下さりありがとうございます!!
   </div>
 </html>

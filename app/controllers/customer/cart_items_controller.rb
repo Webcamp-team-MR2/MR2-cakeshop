@@ -9,40 +9,54 @@ class Customer::CartItemsController < Customer::CustomerapplicationsController
   end
 
   def confirm
-
+    @cart_items = current_customer.cart_items
+    @total = 0
+    if params[:pay_method].to_i == 0
+      @pay_method = "クレジットカード"
+    else @pay_method = "現金振込み"
+    end
+    if params[:name].to_i == 0
+      @self_address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + " " + current_customer.first_name
+    elsif params[:name].to_i == 1
+      @address = Address.find(params[:address_id])
+      @registered_address = @address.postal_code + " " + @address.address + " " + current_customer.last_name + " " + current_customer.first_name
+    else @new_postal_code = params[:postal_code].to_i
+         @new_address = params[:address]
+         @new_full_name = params[:full_name]
+    end
   end
+
 
 def create
   @customer = current_customer
   @cart_items = @customer.cart_items
-  unless @cart_items.present?
-    @add_cart_item = CartItem.new(cartitem_params)
-    @add_cart_item.save!
-  end
+  x = 0
   @cart_items.each do |cart_item|
-
-  if cart_item.item_id == params[:cart_item][:item_id].to_i
-     cart_item.count += params[:cart_item][:count].to_i
-     cart_item.save!
-    else
+    if cart_item.item_id == params[:cart_item][:item_id].to_i
+      cart_item.count += params[:cart_item][:count].to_i
+      cart_item.save!
+      x =1
+    end
+  end
+  if x == 0
      @add_cart_item = CartItem.new(cartitem_params)
      @add_cart_item.save!
-  end
-  end
+   end
   redirect_to cart_items_path
 end
 
   def edit
     @order = Order.new
     @customer = current_customer
-    @name = ""
     @name =  @customer.last_name + @customer.first_name
+    @addresses = current_customer.addresses
+
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cartitem_params)
-      flash[:notice] = "商品が追加されました!"
+      flash[:notice] = "変更されました!"
       redirect_to cart_items_path
     else
       redirect_to cart_items_path
@@ -50,7 +64,6 @@ end
   end
 
   def destroy
-    # binding.pry
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
@@ -67,8 +80,4 @@ private
   def cartitem_params
       params.require(:cart_item).permit(:customer_id, :item_id, :count)
   end
-
-
-
-
 

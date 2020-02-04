@@ -13,7 +13,7 @@ class Customer::OrdersController < Customer::CustomerapplicationsController
   end
 
   def create
-    @cartitem_new = CartItem.new(Cartitem_params)
+
   end
 end
   private
