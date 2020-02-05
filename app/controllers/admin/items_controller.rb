@@ -6,6 +6,8 @@ class Admin::ItemsController < Admin::AdminapplicationsController
   def index
     #ビューから値をもらってきてパーシャルで検索できるような書き方
     @items = Item.all.page(params[:page])
+    # @items = Item.joins({:items => {:items=> :categories}}).where(category_status: 0).page(params[:page])
+    # @items = Item.preload(:categories).where(category_status: 0).page(params[:page])
   end
 
   def show
