@@ -13,7 +13,7 @@ class Admin::ItemsController < Admin::AdminapplicationsController
     end
     @items = items.sort
     @items = Kaminari.paginate_array(@items).page(params[:page]).per(6)
-   end
+  end
 
   def show
     @item = Item.find(params[:id])
