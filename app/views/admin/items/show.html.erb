@@ -38,9 +38,9 @@
                     <label>販売ステータス</label><br>
                     <% if @item.sale_status == true %>
                         <p>販売中</p>
-                    <% else %>
-                        <p>売り切れ</p>
-                    <% end %>
+                        <% else %>
+                        <p>売切れ</p>
+                        <% end %>
                     <%= link_to "商品編集", edit_admin_item_path(@item) %>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <%= flash[:notice] %>
 <h2>購入情報確認</h2>
-<div>
+<div class="col-md-9">
 	<table class="table table-bordered">
 		<tr align="center">
 			<th width="400">商品名</th><th width="150">単価(税込)</th><th  width="150">数量</th><th  width="150">小計</th>
@@ -21,7 +21,7 @@
 	</table>
 </div>
 
-<div>
+<div class=" col-md-3">
 	<table class="table table-bordered">
 		<tr><th>送料</th><td><%= @shipping_fee %></td></tr>
 		<tr><th>商品合計</th><td><%= @total_price %></td></tr>
@@ -34,7 +34,7 @@
 
 <h3>お届け先</h3>
 <%= @postal_code %> <%= @address %><br>
-<%= @full_name %>
-<div>
-	<%=link_to "購入を確定する", orders_path(@order, params: { order: {pay_method: @pay_method, postal_code: @postal_code, address: @address, full_name: @full_name, item_count: @total_count, total_price: @total_price, shipping_fee: @shipping_fee, customer_id: @customer_id}}), :method => :post  %>
+<%= @full_name %><br><br>
+<div class="">
+	<%=link_to "購入を確定する", orders_path(@order, params: { order: {pay_method: @pay_method, postal_code: @postal_code, address: @address, full_name: @full_name, item_count: @total_count, total_price: @total_price, shipping_fee: @shipping_fee, customer_id: @customer_id}}), :method => :post, :class=> "btn btn-primary" %>
 </div>
