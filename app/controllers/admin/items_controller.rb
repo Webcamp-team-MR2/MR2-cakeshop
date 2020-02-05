@@ -4,11 +4,16 @@ class Admin::ItemsController < Admin::AdminapplicationsController
   end
 
   def index
-    #ビューから値をもらってきてパーシャルで検索できるような書き方
-    @items = Item.all.page(params[:page])
-    # @items = Item.joins({:items => {:items=> :categories}}).where(category_status: 0).page(params[:page])
-    # @items = Item.preload(:categories).where(category_status: 0).page(params[:page])
-  end
+    @categories = Category.where(category_status: 0)
+    items = {}
+    @categories.each do |category|
+      category.items.each do |item|
+      items[item.id] = item
+      end
+    end
+    @items = items.sort
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(6)
+   end
 
   def show
     @item = Item.find(params[:id])

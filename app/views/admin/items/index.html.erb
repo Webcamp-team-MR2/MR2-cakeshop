@@ -12,6 +12,35 @@
                 <h2 class="itemtitle">商品一覧</h2>
                 <%= link_to new_admin_item_path do %>
                 <span class="far fa-plus-square fa-4x "></span>
+            　　<% end %>
+            <table class="table table-fover">
+                <tr>
+                    <th>ID</th>
+                    <th>画像</th>
+                    <th>商品名</th>
+                    <th>税抜価格</th>
+                    <th>カテゴリー</th>
+                    <th>説明文</th>
+                    <th>販売ステータス</th>
+                    <th></th>
+                </tr>
+                    <% @items.each do |item| %>
+                        <tr>
+                            <td><%= item[0]%>
+                                <td><%= attachment_image_tag item[1],:image,:fill,100,100,format: 'jpeg',class:
+                                    "img-circle pull-left img", fallback: "no_image.jpg"%></td>
+                                <td><%= link_to item[1].name ,admin_item_path(item)%></td>
+                                <td><%= item[1].price.to_s + "円" %></td>
+                                <td><%= item[1].category.sweets_name%></td>
+                                <td><%= item[1].description%></td>
+                                <td>
+                                    <% if item[1].sale_status == 0 %>
+                                        <%= "販売中" %>
+                                    <% else %>
+                                        <%= "売り切れ" %>
+                                    <% end %>
+                                </td>
+                                <td><%= link_to "商品編集", edit_admin_item_path(item) %></td>
             <% end %>
                 <table class="table table-fover">
                     <tr>
@@ -41,8 +70,8 @@
                             <td><%= link_to "商品編集", edit_admin_item_path(item) %></td>
                         </tr>
                     <% end %>
-                </table>
-                <%= paginate @items %>
+            </table>
+            <%= paginate @items %> 
             </div>
         </div>
     </body>
