@@ -10,21 +10,21 @@
   </head>
   <body>
     <header>
-    <div class="container" style="width: auto;">
-      <div class="row" style="background-color: black; height: 7vh;">
+    <div class="container" style="width: auto; height: 80px;">
+      <div class="row" style="background-color: salmon;">
           <div class="col-sm-3" style="text-align: left; color: white">
           <h1>ながのCAKE</h1>
           </div>
           <div class="col-sm-9" style="text-align: right;">
           <nav>
               <h3>
-              <%= link_to "ホーム", root_path %>
+              <%= link_to "ホーム", root_path,:class => "link" %>
 
-              <%= link_to "ながのCAKEとは??", homes_about_path %>
+              <%= link_to "ながのCAKEとは??", homes_about_path,:class => "link" %>
 
-              <%= link_to "新規登録", new_customer_registration_path %>
+              <%= link_to "新規登録", new_customer_registration_path,:class => "link" %>
 
-              <%= link_to "ログイン", new_customer_session_path %>
+              <%= link_to "ログイン", new_customer_session_path, :class => "link" %>
               </h3>
           </nav>
           </div>
@@ -37,7 +37,7 @@
     </div>
   </body>
   <footer>
-    <div class="col-lg-12" style="background-color: black; text-align: right; color: white; height: 70px; font-size: 30px; line-height: 70px">
+    <div class="col-lg-12" style="background-color: salmon; text-align: right; color: white; height: 80px; font-size: 30px; line-height: 70px">
     Welcome To ながのCAKE!!</div>
   </footer>
 </body>
