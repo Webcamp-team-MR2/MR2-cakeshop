@@ -7,15 +7,16 @@ ja:
         creating: "制作中"
         shipping: "発送準備中"
         shipped: "発送済み"
+      pay_method:
+        credit: "クレジットカード"
+        bank: "銀行振込"
     order_item:
       create_status:
         ipossible: "着手不可"
         wait: "制作待ち"
         create: "制作中"
         completed: "制作完了"
-    pay_method:
-        credit: "クレジットカード"
-        bank: "銀行振込"
+    
 
   views:
     pagination:

@@ -10,7 +10,7 @@ class Admin::CustomersearchesController < Admin::AdminapplicationsController
     split_keyword.each do |search|
     @customers = Customer.where('last_name LIKE(?) OR first_name LIKE(?)', "%#{search}%", "%#{search}%")
     end
-    @customers = Kaminari.paginate_array(@customers).page(params[:page]).per(1)
+    @customers = Kaminari.paginate_array(@customers).page(params[:page]).per(5)
     @customers.uniq!
     end
   end
