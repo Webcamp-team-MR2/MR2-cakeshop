@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .categorytitle {
     margin-right: 20%;
-    margin-left: 15%;
+    margin-left: 10%;
     margin-bottom: 33px;
     text-align: center;
 }
@@ -18,4 +18,12 @@
 .submitbtn{
     transition: all .1s;
     transform: scale(0.9);
+}
+
+.th{
+    text-align: left;
+}
+
+.field2{
+margin-right: 25%;
 }

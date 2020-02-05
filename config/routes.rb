@@ -79,4 +79,8 @@ Rails.application.routes.draw do
   namespace :admin do
   get "searches/" => "searchwindows#index", as: "search"
   end
+
+  namespace :admin do
+  get "customer/searches/" => "customersearches#index"
+  end
 end

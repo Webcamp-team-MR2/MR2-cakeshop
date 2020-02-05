@@ -4,19 +4,14 @@
 .navbar-brand {
     color: red;
 }
-
-.header-items {
-    margin: 0 auto;
-    display: table;
-    table-layout: fixed;
-    float:none;
-}
-
 .header-items a {
     color: black;
 }
 
 .searchwindow {
-    padding-top: 1.3%;
-    padding-right: 5%;
+    padding-left: 20%;
+}
+
+.th{
+    text-align: center;
 }

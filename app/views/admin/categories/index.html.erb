@@ -24,7 +24,7 @@
                         <%= f.label :ジャンル %>
                         <%= f.text_field :sweets_name %>
                         <label>
-                            <%= f.radio_button :category_status, 0 %>
+                            <%= f.radio_button :category_status, 0, { checked: true } %>
                             有効</label>
                         <label>
                             <%= f.radio_button :category_status, 1 %>
@@ -56,15 +56,26 @@
                                             class:"btn btn-default glyphicon glyphicon-wrench" %>
                                         </p>
                                     </td>
-                                <% else %>
+                                    <%# <% else %>
+                                    <%# <tr>
+                                    <td><%= category.sweets_name %>
+                                    <%# </td>
+                                    <td>
+                                        <p style="width:70px">無効</p>
+                                    </td>
+                                    <td>
+                                        <p style="width:16px"><%= link_to "編集する", edit_admin_category_path(category),
+                                            class:"btn btn-default glyphicon glyphicon-wrench" %>
+                                        <%# </p>
+                                    </td> %>
                                 <% end %>
                             <% end %>
                         </tr>
                     </tbody>
                 </table>
                 <%= paginate @categories %>
-                </div>
             </div>
-         </div>
-    </body>
+        </div>
+    </div>
+</body>
 </html>

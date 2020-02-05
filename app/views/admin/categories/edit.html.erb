@@ -11,10 +11,10 @@
         <p><%= flash[:notice] %></p>
     <% end %>
 
-    <h2 class="categorytitle">ジャンル編集画面</h2>
+    <h2 class="categorytitle">ジャンル編集</h2>
     <%= form_for (@category), url:admin_category_path do |f| %>
     <div class="col-md-7 col-md-offset-3">
-        <div class="field">
+        <div class="field2">
             <%= f.label :ジャンル %>
             <%= f.text_field :sweets_name %>
             <label>

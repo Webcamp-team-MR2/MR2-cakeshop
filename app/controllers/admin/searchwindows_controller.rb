@@ -9,9 +9,9 @@ class Admin::SearchwindowsController < Admin::AdminapplicationsController
       split_keyword = params[:search].split(/[[:blank:]]+/)
       split_keyword.each do |search|
       @items += Item.where('name LIKE(?)', "%#{search}%")
-      @items = Kaminari.paginate_array(@items).page(params[:page]).per(5)
-      end
-      @items.uniq!
+    end
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(6)
+    @items.uniq!
     end
   end
 end

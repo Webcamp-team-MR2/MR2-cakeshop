@@ -1,12 +1,19 @@
 class Admin::ItemsController < Admin::AdminapplicationsController
-  def new
+  def news
     @item = Item.new
   end
 
   def index
-    #ビューから値をもらってきてパーシャルで検索できるような書き方
-    @items = Item.all.page(params[:page])
-  end
+    @categories = Category.where(category_status: 0)
+    items = {}
+    @categories.each do |category|
+      category.items.each do |item|
+      items[item.id] = item
+      end
+    end
+    @items = items.sort
+    @items = Kaminari.paginate_array(@items).page(params[:page]).per(6)
+   end
 
   def show
     @item = Item.find(params[:id])

@@ -27,17 +27,20 @@
                         <li class="active">
                             <%= link_to("ログアウト", destroy_admin_session_path, {method: :delete, class:
                             "active"}) %></li>
-                    </div>
-                    <div class="searchwindow navbar-right">
-                        <%= form_with(url: admin_search_path, method: :get, local: true) do %>
-                        <%= text_field_tag :search%>
-                        <%= submit_tag 'Search' %>
-                    </div>
-                <% end %>
+                </div>
+                <div class="searchrwindow %">
+                    <%= form_with(url: admin_customer_searches_path, method: :get, local: true) do %>
+                    <%= text_field_tag :search, placeholder="会員名を入力" %>
+                    <%= submit_tag 'Search' %>
+                    <% end %>
+                    <%= form_with(url: admin_search_path, method: :get, local: true) do %>
+                    <%= text_field_tag :search, placeholder="商品名を入力"%>
+                    <%= submit_tag 'Search' %>
+                    <% end %>
+                </div>
             <% end %>
-        </div>
-    </nav>
-
-    <%= yield %>
-</body>
+            </div>
+        </nav>
+        <%= yield %>
+    </body>
 </html>
