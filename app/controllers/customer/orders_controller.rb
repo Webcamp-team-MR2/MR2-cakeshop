@@ -1,12 +1,12 @@
 class Customer::OrdersController < Customer::CustomerapplicationsController
   before_action :current_customer
   def show
-    # @order = Order.find(params[:id])
-    # @order_items = OrderItem.where(order_id: params[:id])
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
   end
 
   def index
-    # @orders = current_customer.orders
+    @orders = current_customer.orders
   end
 
   def thanks

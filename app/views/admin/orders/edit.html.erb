@@ -30,11 +30,7 @@
                         <tr>
                             <th><%= "支払い方法" %></th>
                             <td>
-                                <% if @order.pay_method %>
-                                    <%= "銀行振込" %>
-                                <% else %>
-                                    <%= "クレジットカード" %>
-                                <% end %>
+                                <%=　@order.pay_method_i18n %>
                             </td>
                         </tr>
                         <tr>
