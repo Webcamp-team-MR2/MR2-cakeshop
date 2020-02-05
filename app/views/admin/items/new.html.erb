@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h2 class="itemtitle">商品新規登録</h2>
-            <%= form_for (@item), admin_items_path do |f| %>
+            <%= form_for (@item),url: admin_items_path do |f| %>
             <div class="col-md-3 col-md-offset-3">
                 <div class="form-group">
                     <%= attachment_image_tag @item,:image,:fill,200,200,format: 'jpeg',class:
