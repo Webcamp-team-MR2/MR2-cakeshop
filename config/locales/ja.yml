@@ -10,7 +10,6 @@ ja:
       pay_method:
         credit: "クレジットカード"
         bank: "銀行振込"
-
     order_item:
       create_status:
         ipossible: "着手不可"
