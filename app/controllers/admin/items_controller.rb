@@ -1,5 +1,5 @@
 class Admin::ItemsController < Admin::AdminapplicationsController
-  def news
+  def new
     @item = Item.new
   end
 
